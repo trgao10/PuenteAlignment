@@ -4,7 +4,7 @@ MST-based Generalized Dataset Procrustes Distance by Jesús Puente
 MATLAB Code originally written by Jesús Puente (jparrubarrena@gmail.com ); currently maintained by Tingran Gao (trgao10@math.duke.edu). Christopher Glynn (cdglynn@gmail.com) implemented this algorithm in R, see [here](https://stat.duke.edu/~sayan/auto3dgm/).
 
 -----------
-The entry point is the script `code/main.m`; see comments on the top of that script for a quick introduction. 
+The entry point is the script `code/main.m`; see comments at the top of that script for a quick introduction. 
 
 -----------
 #### Please Cite:
