@@ -1,0 +1,271 @@
+
+
+/*****************************************************************************/
+/** GENERAL SETUP ************************************************************/
+
+a img { 
+        border          : none;
+    }
+dt
+    { 
+        font-weight     : bolder; 
+    }
+h1  {
+        font-family     : sans-serif;
+        text-align      : center;
+    }
+
+div.par + div.par 
+    {
+        padding-top : .5em;
+    }
+
+/* MATH */
+.inline-math       
+    {       
+        display           : inline-block;
+        vertical-align    : baseline;
+        page-break-inside : avoid;
+        page-break-after  : always;
+    }
+.inline-math > div
+    {
+        display : inline-block;        
+        position : relative;
+        vertical-align : top;
+    }
+.math       
+    {       
+        width             : 100%;
+        font-style        : italic;
+        color             : blue;
+        text-align        : center;
+/*
+        page-break-inside : avoid;
+        page-break-after  : always;
+        */
+    }
+
+/*****************************************************************************/
+/** Inlined code/preformatted text *******************************************/
+pre {       
+        border                  : solid thin black;
+        padding                 : 1em;
+        margin                  : 0em 1em 1em 1em;
+        font-family             : monospace;
+        font-size               : small;
+    }
+
+.pre-header 
+    {   
+        margin          : 0em 1em 0em 1em;
+        text-align      : right;
+    }
+.pre-header-button-bar
+    {
+        display : none;
+    }
+    /*
+.pre-header-button
+    {
+        display : inline-block;
+        padding                 : 2px 1em 2px 1em;
+        border : solid thin black;
+        border-bottom-style : thin;
+        border-top-left-radius  : .5em 1em; 
+        border-top-right-radius : .5em 1em;
+        border-bottom-color : white;
+        position : relative;
+        bottom : -1px;
+    }
+.pre-header-button a
+    {
+        text-decoration : none;
+        font-weight : bold;
+        font-family : sans-serif;
+        font-size : smaller;
+    }
+
+.pre-header-button-spacer
+    {
+        width : .5em;
+        display : inline-block;
+    }
+*/
+.line-no
+    {
+            font-size : smaller;
+            color : gray;
+            vertical-align : middle;
+    }
+
+
+dl.arglist dt
+            {       font-size               : larger; }
+
+/* CONTENTS */
+.float-right-element 
+            {       float                   : right;
+                    margin                  : 1em;
+            }
+.float-left-element  
+            {       float                   : right;
+                    margin                  : 1em;
+            }
+.nofloat-element    
+            {       margin                  : 1em;
+            } 
+
+.float-content
+            {
+                    border : solid thin gray;
+            }
+.float-caption
+            {
+                    border-top              : solid thin rgb(200,200,200);
+                    font-weight             : bold;
+            }
+
+
+
+
+.table-head td
+            {
+                    background-color        : rgb(200,200,200);
+                    border                  : solid thin rgb(150,150,150);
+                    font-weight             : bold;
+            }
+.float-table td
+            {
+                    margin                  : 0;
+                    padding                 : 2px;
+            }
+.float-table 
+            {
+                    border                  : solid thin blue;
+                    background-color        : rgb(240,240,240);
+            }
+
+
+/* HEADINGS */
+.section-title
+            {
+                    font-family             : sans-serif;
+            }
+
+/* MISC FLUFF */
+div.timestamp
+            {
+                    font-size               : 50%;
+                    text-align              : right;
+            }
+hr.content-delimiter
+            {
+            }
+
+td.author   {
+                    font-size               : smaller;
+            }
+
+.note-element
+            {
+                    float                   : right;
+                    width                   : 20em;
+                    margin                  : .5em;
+                    font-family             : sans-serif;
+                    font-size               : smaller;
+            }
+.note-content
+            {
+                    padding                 : .5em;
+                    border                  : dashed thin red;
+            }
+.toc        {       font-family                 : sans-serif;
+            }
+.toc a      {
+                    text-decoration             : none;
+            }
+.toc ul     {       list-style-type             : none;
+            }
+.node-file-header
+            {
+                    font-family                 : sans-serif;
+                    font-weight                 : bolder;
+            }
+.contents-level-2 
+            {
+                    font-size                   : smaller;
+            }
+
+/* Index style */
+.index-summary
+            {       /*  */
+                    text-align                  : center;
+                    font-weight                 : bolder;
+                    font-family                 : sans-serif;
+            }
+.index-list
+            {
+                    margin                      : 5em;
+            }
+.index-list ul
+            {
+                    list-style-type             : none;
+            }
+.index-letter
+            {
+                    border : solid medium gray;
+                    border-style : solid none none none;
+            }
+
+
+.sidebar-contents-list /* The <ul> list element containing a sub-entry in the contents list */
+                    {       list-style-type : none;
+                            padding-left : 10px;
+                            margin-left : 0px;
+                    }
+.sidebar-contents-list li
+                    {       padding-top : 3px;
+                    }
+.sidebar-content-list-button-div 
+                    {       width               : 0px; 
+                            text-align          : right;
+                    }
+.sidebar-index-list {       list-style-type     : none;
+                            padding-left        : 0.5em;
+                            margin-left         : 0px;
+                    }
+
+/* Some special definitions */
+.hierarchy-item     {   list-style-type : square;
+                        margin-top : 0px;
+                    }
+.class-item-list td {
+                        vertical-align : top;
+                    }
+
+.template-main-body table
+    {
+        border : solid thin black;
+    }
+
+/*****************************************************************************/
+/** Language syntax hilighting stuff *****************************************/
+
+.language-syntax-keyword
+                    {
+                        font-weight : bolder;
+                    }
+.language-syntax-comment
+                    {
+                        font-style : italic;
+                    }
+.language-syntax-string
+                    {
+                        font-style : italic;
+                    }
+.language-syntax-language
+                    {
+                        color : black;
+                        font-weight : bolder;
+                    }

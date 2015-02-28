@@ -1,0 +1,180 @@
+#NMake / Windows 64x86 / Visual C
+
+INCPATHS=/I..\..\platform\win64x86\h /I.
+LIBPATHS=/libpath:..\..\platform\win64x86\bin
+MOSEKLIB=mosek64_7_1.lib
+CCOPT=
+LDOPT=
+CC=cl
+LD=link
+
+EXAMPLES=lo1.exe \
+         lo2.exe \
+         production.exe \
+         milo1.exe \
+         mioinitsol.exe \
+         qo1.exe \
+         cqo1.exe \
+         qcqo1.exe \
+         sdo1.exe \
+         concurrent1.exe \
+         concurrent2.exe \
+         solvebasis.exe \
+         solvelinear.exe \
+         tstscopt.exe \
+         tstexpopt.exe \
+         callback.exe \
+         sensitivity.exe \
+         feasrepairex1.exe \
+         solutionquality.exe \
+         errorreporting.exe \
+         unicode.exe
+
+
+lo1.exe: lo1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"lo1.obj" lo1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:lo1.exe lo1.obj
+
+lo2.exe: lo2.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"lo2.obj" lo2.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:lo2.exe lo2.obj
+
+production.exe: production.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"production.obj" production.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:production.exe production.obj
+
+milo1.exe: milo1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"milo1.obj" milo1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:milo1.exe milo1.obj
+
+mioinitsol.exe: mioinitsol.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"mioinitsol.obj" mioinitsol.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:mioinitsol.exe mioinitsol.obj
+
+qo1.exe: qo1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"qo1.obj" qo1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:qo1.exe qo1.obj
+
+cqo1.exe: cqo1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"cqo1.obj" cqo1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:cqo1.exe cqo1.obj
+
+qcqo1.exe: qcqo1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"qcqo1.obj" qcqo1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:qcqo1.exe qcqo1.obj
+
+sdo1.exe: sdo1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"sdo1.obj" sdo1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:sdo1.exe sdo1.obj
+
+concurrent1.exe: concurrent1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"concurrent1.obj" concurrent1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:concurrent1.exe concurrent1.obj
+
+concurrent2.exe: concurrent2.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"concurrent2.obj" concurrent2.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:concurrent2.exe concurrent2.obj
+
+dw.exe: dw.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"dw.obj" dw.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:dw.exe dw.obj
+
+dyn1.exe: dyn1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"dyn1.obj" dyn1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:dyn1.exe dyn1.obj
+
+dyn2.exe: dyn2.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"dyn2.obj" dyn2.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:dyn2.exe dyn2.obj
+
+solvebasis.exe: solvebasis.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"solvebasis.obj" solvebasis.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:solvebasis.exe solvebasis.obj
+
+solvelinear.exe: solvelinear.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"solvelinear.obj" solvelinear.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:solvelinear.exe solvelinear.obj
+
+mskscopt-ext.exe: mskscopt-ext.c scopt-ext.obj
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"mskscopt-ext.obj" mskscopt-ext.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:mskscopt-ext.exe mskscopt-ext.obj scopt-ext.obj
+
+tstscopt.exe: tstscopt.c scopt-ext.obj
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"tstscopt.obj" tstscopt.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:tstscopt.exe tstscopt.obj scopt-ext.obj
+
+mskexpopt.exe: mskexpopt.c expopt.obj dgopt.obj scopt-ext.obj
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"mskexpopt.obj" mskexpopt.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:mskexpopt.exe mskexpopt.obj expopt.obj dgopt.obj scopt-ext.obj 
+
+tstexpopt.exe: tstexpopt.c expopt.obj dgopt.obj scopt-ext.obj
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"tstexpopt.obj" tstexpopt.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:tstexpopt.exe tstexpopt.obj expopt.obj dgopt.obj scopt-ext.obj 
+
+callback.exe: callback.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"callback.obj" callback.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:callback.exe callback.obj
+
+sensitivity.exe: sensitivity.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"sensitivity.obj" sensitivity.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:sensitivity.exe sensitivity.obj
+
+feasrepairex1.exe: feasrepairex1.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"feasrepairex1.obj" feasrepairex1.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:feasrepairex1.exe feasrepairex1.obj
+
+solutionquality.exe: solutionquality.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"solutionquality.obj" solutionquality.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:solutionquality.exe solutionquality.obj
+
+errorreporting.exe: errorreporting.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"errorreporting.obj" errorreporting.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:errorreporting.exe errorreporting.obj
+
+optimize.exe: optimize.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"optimize.obj" optimize.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:optimize.exe optimize.obj
+
+unicode.exe: unicode.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"unicode.obj" unicode.c
+	$(LD) $(LIBPATHS) $(MOSEKLIB) $(LDOPT) /out:unicode.exe unicode.obj
+
+
+#
+# These general purpose objects are shared between multiple examples:
+#
+scopt-ext.obj: scopt-ext.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"scopt-ext.obj" scopt-ext.c
+
+dgopt.obj: dgopt.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"dgopt.obj" dgopt.c
+
+expopt.obj: expopt.c
+	$(CC) /c $(INCPATHS)          $(CCOPT) /Fo"expopt.obj" expopt.c
+
+
+#
+# These targets do not produce output of targetname:
+#
+all: $(EXAMPLES)
+	
+clean:
+	del *.obj 
+cleanall:
+	del *.obj $(EXAMPLES)
+test: $(EXAMPLES)
+	lo1.exe
+	lo2.exe
+	production.exe
+	milo1.exe
+	mioinitsol.exe
+	qo1.exe
+	cqo1.exe
+	qcqo1.exe
+	sdo1.exe
+	solvebasis.exe
+	solvelinear.exe
+	tstscopt.exe
+	tstexpopt.exe
+	sensitivity.exe
+	callback.exe intpnt ..\data\25fv47.mps

@@ -1,0 +1,175 @@
+/* This file contains the non-global formatting info, for example style info for specific lists, tables etc.
+ */
+
+
+table
+{
+    text-align : left;
+}
+
+/* From: Example: Stingler's Diet Model */
+.table-diet-example-data
+{
+    border : solid thin black;
+    border-spacing : 0px;
+    empty-cells : show;
+}
+
+.table-diet-example-data td
+{
+    text-align    : right;
+    padding-left  : .2em;
+    padding-right : .2em;
+}
+
+.table-diet-example-data .table-column-0
+{  
+    font-weight : bold;
+    text-align : left;
+    border-right : solid 2px gray;
+}
+.table-diet-example-data .table-row-0 td
+{  
+    font-weight : bold;
+    text-align : center;
+}
+.table-diet-example-data .table-row-1 td
+{  
+    font-weight : bold;
+    text-align : center;
+    border-bottom : solid 2px gray;
+}
+.table-diet-example-data .table-row-2 td
+{  
+    font-style : italic;
+    border-bottom : solid 1px gray;
+}
+
+
+
+.table-headers-at-col1-row1
+{
+    border : solid thin black;
+    empty-cells : show;
+    border-spacing : 0px;
+}
+
+.table-headers-at-col1-row1 td
+{
+    padding : .1em .3em .1em .3em;
+}
+
+.table-headers-at-col1-row1 .table-row-0 td
+{
+    border-bottom : solid medium gray;
+    font-weight : bold;
+}
+
+.table-headers-at-col1-row1 .table-column-0
+{
+    border-right: solid medium gray;
+    font-weight : bold;
+}
+
+
+.table-full-grid
+{
+    border-spacing : 0px;
+    border-collapse : collapse;
+    empty-cells : show;
+}
+
+.table-full-grid td
+{
+    padding : .1em .3em .1em .3em;
+    border : solid thin black;
+}
+
+.enumlist {
+    margin-left  : 5em;
+    margin-right : 5em;
+}
+
+.enumlist>dt {
+    border-top  : solid thin black;
+    font-weight : bold;
+    margin-top : .5em;
+}
+.enumlist>dd {
+    margin-left : 30%;
+    position    : relative;
+}
+
+
+
+
+/* FUSION */
+
+.table-container
+{
+    text-align : left;    
+    border     : solid thin gray;
+    padding    : .5em;
+    margin     : .5em;
+}
+
+.table-container table
+{
+    border-spacing : 0px;
+    border-collapse : collapse;
+}
+
+.table-container td
+{
+    padding : .1em .3em .1em .3em;
+}
+
+
+.fusion-table-default
+{
+    border-spacing : 100px;    
+    table-layout    : fixed;
+    border-collapse : collapse;
+}
+
+.fusion-table-default td
+{
+    min-height : 1em;
+}
+
+.table-fusion-markowitz-example-data td
+{
+    text-align : right;
+    border-width : 0px;
+}
+
+
+.table-fusion-markowitz-example-data .table-row-0 td { font-weight  : bold; }
+.table-fusion-markowitz-example-data .table-row-1 td { font-weight  : bold; }
+.table-fusion-markowitz-example-data .table-column-0
+{
+    border-right : solid thin gray;
+    text-align : left;
+    font-weight  : bold;
+}
+
+.table-fusion-markowitz-example-data .table-row-1 td
+{
+    border-bottom : solid thin gray;
+}
+
+
+
+
+/* MOSEK API */
+
+.mosekref-function-topics ul
+{
+  margin-top : 0px;
+}
+
+
+.function-list dt
+{
+    margin-top : 1em;
+}
