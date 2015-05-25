@@ -3,6 +3,6 @@ delete '../output/run/*.off'
 delete '../output/run/*.txt'
 
 delete '../output/run/jobs/*.mat'
+delete '../output/run/aligned/*.off'
 delete '../meshes/dataset/*.off'
 delete '../meshes/dataset/subsampled/*.off'
-delete '../meshes/dataset/aligned/*.off'
