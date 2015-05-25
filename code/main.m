@@ -53,7 +53,7 @@ ds.msc.mesh_dir     = [ ds.msc.general_dir 'meshes' filesep ds.dataset filesep];
 ds.msc.output_dir   = [ ds.msc.general_dir 'output' filesep ds.run filesep];
 
 %% Useful lambda functions
-center = @(X) X-repmat(mean(X')',1,size(X,2));
+center = @(X) X-repmat(mean(X,2),1,size(X,2));
 scale  = @(X) norm(center(X),'fro') ;
 
 %% Initialization
@@ -66,14 +66,14 @@ for ii = 1 : ds.n
     progressbar(ii, ds.n, 20);
     ds.shape{ ii }.X              = cell( 1, ds.K );
     ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( ds.msc.mesh_dir , ds.ids{ii} , ds.N( ds.K )  );
-    ds.shape{ ii }.center         = mean(  ds.shape{ ii }.X{ ds.K }')';
+    ds.shape{ ii }.center         = mean(  ds.shape{ ii }.X{ ds.K }, 2 );
     ds.shape{ ii }.scale          = scale( ds.shape{ ii }.X{ ds.K } );
     %ds.shape{ ii }.delta          = cell( 1, ds.K );
     ds.shape{ ii }.epsilon        = zeros( 1, ds.K );
     for kk = 1 : ds.K
         ds.shape{ ii }.X{kk}     = ds.shape{ii}.X{ ds.K }(:, 1:ds.N( kk ) );
         ds.shape{ ii }.X{kk}     = center(  ds.shape{ii}.X{kk} ) / scale(  ds.shape{ii}.X{kk} ) ;
-        [ds.shape{ ii }.U_X{kk} , tmpD_X , tmpV_X ] = svd( ds.shape{ii}.X{kk} );
+        [ ds.shape{ ii }.U_X{kk} , tmpD_X , tmpV_X ] = svd( ds.shape{ii}.X{kk} );
         ds.shape{ ii }.D_X{kk}   = diag( tmpD_X );
         ds.shape{ ii }.V_X{kk}   = tmpV_X(:,1:3);
         %ds.shape{ ii }.delta{kk} = squareform( pdist ( ds.shape{ ii }.X{ kk }' ) );
@@ -90,7 +90,7 @@ for ii = 1 : ds.n
     %Read the files
     lowres_off_fn = [ds.msc.mesh_dir 'subsampled' filesep ds.ids{ii} '.off'];
     if exist( lowres_off_fn , 'file' )
-        [ds.shape{ ii }.lowres.V ,ds.shape{ ii }.lowres.F]= read_off(lowres_off_fn);
+        [ds.shape{ ii }.lowres.V ,ds.shape{ ii }.lowres.F] = read_off(lowres_off_fn);
     else
         error(['Cannot find low resolution file ' lowres_off_fn ]);
     end
@@ -113,7 +113,7 @@ pa.pfj        = [ ds.msc.output_dir 'jobs/'];
 % computations, to be computed either in the same machine or in different
 % ones
 % Remember to remove all previous jobs in the output/jobs folder!
-pa = compute_alignment( pa , f, 1, 0 );
+pa = compute_alignment( pa, f, 1, 0 );
 pa = reduce( ds, pa, 1 );
 
 % %Diagonals
@@ -127,7 +127,7 @@ pa = reduce( ds, pa, 1 );
 %% Globalization
 % 'ga' stands for global alignment
 mst     = graphminspantree( sparse( pa.d + pa.d' ) );
-ga      = globalize( pa , mst+mst' , 2 ); 
+ga      = globalize( pa, mst+mst', 2 ); 
 ga.k    = k;
 
 plot_tree( pa.d+pa.d', mst, ds.names, 'mds', ones(1,ds.n),'');
@@ -188,3 +188,4 @@ write_off_placed_shapes( [ds.msc.output_dir 'map.off' ], coords, ds, ga, eye(3),
 
 disp('Alignment Completed');
 %plot_shape_corr = @(ii,jj,k) plot_point_correspondence(ds.shape{ii}.X{k},ds.shape{jj}.X{k}*pa.P{ii,jj},pa.R{ii,jj})
+

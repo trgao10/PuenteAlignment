@@ -1,0 +1,175 @@
+#Gnu Make / Linux 64x86 / GCC
+
+INCPATHS=-I../../platform/linux64x86/h -I.
+LIBPATHS=-L../../platform/linux64x86/bin
+MOSEKLIB=-lmosek64
+CCOPT=
+LDOPT=-Wl,-rpath-link,./../../platform/linux64x86/bin -Wl,-rpath,'$$ORIGIN/../../platform/linux64x86/bin' -pthread -lc -lm
+CC=gcc -m64
+LD=gcc -m64
+
+EXAMPLES=lo1 \
+         lo2 \
+         production \
+         milo1 \
+         mioinitsol \
+         qo1 \
+         cqo1 \
+         qcqo1 \
+         sdo1 \
+         concurrent1 \
+         concurrent2 \
+         solvebasis \
+         solvelinear \
+         tstscopt \
+         tstexpopt \
+         callback \
+         sensitivity \
+         feasrepairex1 \
+         solutionquality \
+         errorreporting \
+         unicode
+
+lo1: lo1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o lo1.o lo1.c
+	$(LD) $(LIBPATHS) lo1.o $(MOSEKLIB) $(LDOPT) -o lo1 
+
+
+lo2: lo2.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o lo2.o lo2.c
+	$(LD) $(LIBPATHS) lo2.o $(MOSEKLIB) $(LDOPT) -o lo2 
+
+
+production: production.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o production.o production.c
+	$(LD) $(LIBPATHS) production.o $(MOSEKLIB) $(LDOPT) -o production 
+
+
+milo1: milo1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o milo1.o milo1.c
+	$(LD) $(LIBPATHS) milo1.o $(MOSEKLIB) $(LDOPT) -o milo1 
+
+
+mioinitsol: mioinitsol.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o mioinitsol.o mioinitsol.c
+	$(LD) $(LIBPATHS) mioinitsol.o $(MOSEKLIB) $(LDOPT) -o mioinitsol
+
+
+qo1: qo1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o qo1.o qo1.c
+	$(LD) $(LIBPATHS) qo1.o $(MOSEKLIB) $(LDOPT) -o qo1 
+
+
+cqo1: cqo1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o cqo1.o cqo1.c
+	$(LD) $(LIBPATHS) cqo1.o $(MOSEKLIB) $(LDOPT) -o cqo1 
+
+
+qcqo1: qcqo1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o qcqo1.o qcqo1.c
+	$(LD) $(LIBPATHS) qcqo1.o $(MOSEKLIB) $(LDOPT) -o qcqo1
+
+
+sdo1: sdo1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o sdo1.o sdo1.c
+	$(LD) $(LIBPATHS) sdo1.o $(MOSEKLIB) $(LDOPT) -o sdo1 
+
+
+concurrent1: concurrent1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o concurrent1.o concurrent1.c
+	$(LD) $(LIBPATHS) concurrent1.o $(MOSEKLIB) $(LDOPT) -o concurrent1 
+
+
+concurrent2: concurrent2.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o concurrent2.o concurrent2.c
+	$(LD) $(LIBPATHS) concurrent2.o $(MOSEKLIB) $(LDOPT) -o concurrent2 
+
+
+solvebasis: solvebasis.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o solvebasis.o solvebasis.c
+	$(LD) $(LIBPATHS) solvebasis.o $(MOSEKLIB) $(LDOPT) -o solvebasis 
+
+
+solvelinear: solvelinear.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o solvelinear.o solvelinear.c
+	$(LD) $(LIBPATHS) solvelinear.o $(MOSEKLIB) $(LDOPT) -o solvelinear 
+
+
+tstscopt: tstscopt.c scopt-ext.o 
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o tstscopt.o tstscopt.c
+	$(LD) $(LIBPATHS) tstscopt.o scopt-ext.o $(MOSEKLIB) $(LDOPT) -o tstscopt 
+
+
+tstexpopt: tstexpopt.c expopt.o dgopt.o scopt-ext.o
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o tstexpopt.o tstexpopt.c
+	$(LD) $(LIBPATHS) tstexpopt.o expopt.o dgopt.o scopt-ext.o  $(MOSEKLIB) $(LDOPT) -o tstexpopt 
+
+
+callback: callback.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o callback.o callback.c
+	$(LD) $(LIBPATHS) callback.o $(MOSEKLIB) $(LDOPT) -o callback 
+
+
+sensitivity: sensitivity.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o sensitivity.o sensitivity.c
+	$(LD) $(LIBPATHS) sensitivity.o $(MOSEKLIB) $(LDOPT) -o sensitivity 
+
+
+feasrepairex1: feasrepairex1.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o feasrepairex1.o feasrepairex1.c
+	$(LD) $(LIBPATHS) feasrepairex1.o $(MOSEKLIB) $(LDOPT) -o feasrepairex1 
+
+          
+solutionquality: solutionquality.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o solutionquality.o solutionquality.c
+	$(LD) $(LIBPATHS) solutionquality.o $(MOSEKLIB) $(LDOPT) -o solutionquality 
+
+
+errorreporting: errorreporting.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o errorreporting.o errorreporting.c
+	$(LD) $(LIBPATHS)  errorreporting.o $(MOSEKLIB) $(LDOPT) -o errorreporting
+
+
+unicode: unicode.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o unicode.o unicode.c
+	$(LD) $(LIBPATHS) unicode.o $(MOSEKLIB) $(LDOPT) -o unicode 
+
+
+#
+# These general purpose objects are shared between multiple examples:
+#
+scopt-ext.o: scopt-ext.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o scopt-ext.o scopt-ext.c
+
+dgopt.o: dgopt.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o dgopt.o dgopt.c
+
+expopt.o: expopt.c
+	$(CC) -c $(INCPATHS)          $(CCOPT) -o expopt.o expopt.c
+
+
+#
+# These targets do not produce output of targetname:
+#
+.PHONY: all clean cleanall test
+
+all: $(EXAMPLES)
+	
+clean:
+	rm -f *.o $(EXAMPLES)
+test: $(EXAMPLES)
+	./lo1
+	./lo2
+	./production
+	./milo1
+	./mioinitsol
+	./qo1
+	./cqo1
+	./qcqo1
+	./sdo1
+	./solvebasis
+	./solvelinear
+	./tstscopt
+	./tstexpopt
+	./sensitivity
+	./callback intpnt ../data/25fv47.mps

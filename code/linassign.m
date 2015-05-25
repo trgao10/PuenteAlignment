@@ -35,18 +35,18 @@ else
     beq     = sparse(ones(2*N,1));
     
     %Solve linear program
-%     prob.c = dissimilarity_for_lp_red;
-%     prob.a = Aeq_red;
-%     prob.buc = beq;
-%     prob.blc = beq;
-%     prob.blx = lb_red;
-%     param.MSK_IPAR_OPTIMIZER = 'MSK_OPTIMIZER_PRIMAL_SIMPLEX';
-%     [~,res] = mosekopt('minimize echo(0)',prob,param);
-%     P_red = res.sol.bas.xx;
-%     d = res.sol.bas.pobjval;
+    prob.c = dissimilarity_for_lp_red;
+    prob.a = Aeq_red;
+    prob.buc = beq;
+    prob.blc = beq;
+    prob.blx = lb_red;
+    param.MSK_IPAR_OPTIMIZER = 'MSK_OPTIMIZER_PRIMAL_SIMPLEX';
+    [~,res] = mosekopt('minimize echo(0)',prob,param);
+    P_red = res.sol.bas.xx;
+    d = res.sol.bas.pobjval;
     
-    options = optimset('Display','none');
-    [P_red, d]=linprog(dissimilarity_for_lp_red,[],[],Aeq_red,beq,lb_red,[],[],options);
+%     options = optimset('Display','none');
+%     [P_red, d]=linprog(dissimilarity_for_lp_red,[],[],Aeq_red,beq,lb_red,[],[],options);
     
     %Remove spurious (close to zero) values
     P_red = sparse( P_red > 1e-1 );

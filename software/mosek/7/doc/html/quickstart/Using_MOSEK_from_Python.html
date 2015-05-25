@@ -1,0 +1,194 @@
+<!doctype html>
+
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> Using MOSEK from Python </title>
+
+  <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<!-- Stylesheet and script related to page content -->
+  <link rel="stylesheet" type="text/css" media="screen,portable" href="style/style.css">
+  <link rel="stylesheet" type="text/css" media="print" href="style/print-style.css">
+
+  <link rel="stylesheet" type="text/css" href="style/content-formatting.css">
+
+  <link href="images/favicon.png" rel="shortcut icon"> </script>
+
+  
+  
+  <link rel="start" href="index.html">
+
+  <style>
+    .breadcrumb div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .pager      div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .hacked-breadcrumb { font-size : small; color : gray; }
+    .hacked-breadcrumb span.divider { padding : 0px 5px 0px 5px; }
+    .hacked-breadcrumb div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .nav        div.linebreak { display : inline; width : 1ex; height : 0px; }
+  </style>
+
+  <script type="text/javascript">
+    function body_onkeypress(ev)
+    {
+       var keynum;
+       if (window.event) keynum = ev.keyCode;
+       else              keynum = ev.which;
+       
+       if      (keynum == 84 || keynum == 116)
+       {
+         
+           document.location = "index.html";
+         
+       }
+       else if (keynum == 73 || keynum == 105)
+       {
+         
+       }
+       else
+         return keynum;
+    }
+  </script>
+</head>
+<body onkeypress="return body_onkeypress(event);">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">      
+          <a class="brand" href="http://www.mosek.com">www.mosek.com</a>
+          <ul class="nav">
+            <li><a href="index.html"> MOSEK Quickstart Guide<div class="linebreak"></div> Version 7.1 (Revision 31) </a></li>
+          </ul>
+          
+        </div>
+        
+        <div class="container hacked-breadcrumb">      
+            
+              
+              <a href="index.html"> MOSEK Quickstart Guide<div class="linebreak"></div> Version 7.1 (Revision 31) </a><span class="divider">&gt;</span>
+            
+            Using MOSEK from Python
+        </div>
+        
+      </div>
+    </div>
+  
+  <div class="container" style="margin-top : 50px;">
+    <div class="container">
+      <ul class="pager">
+        
+        
+        
+        
+      </ul>
+    </div>
+    
+    <hr>
+    
+    <h1> Using MOSEK from Python </h2>
+
+
+    <div style="height : 1em;">&nbsp;</div>
+
+    <div class="container">
+      
+        <div class="par"> There are two ways to use MOSEK from Python: </div>
+<ul> 
+    <li><div class="par"> The object oriented Fusion API,</div>
+</li>
+ 
+    <li><div class="par"> and the function-oriented interface optimizer API. </div>
+</li>
+ 
+  </ul><div class="par"> Since MOSEK 7.0 we recommend using the Fusion API unless fine-grained control over the generated model is required. </div>
+
+      
+
+      
+        <h2><a name="section-node-_Using%20MOSEK%20from%20Python_Optimizer%20Python%20API">Optimizer Python API</a></h2><div class="par"> The flat API operatates on a model with one vector of variables  and one vector of constraints. It allows adding or deleting elements  and reoptimizing, and allows use of advanced call-back functions. </div>
+<div class="par"> The flat API is fully documented in <a href="http://docs.mosek.com/7.1/pythonapi/index.html">MOSEK optimizer Python API</a>. </div>
+<h2><a name="section-node-_Using%20MOSEK%20from%20Python_MOSEK%2fFusion">MOSEK/Fusion</a></h2><div class="par"> The Fusion API provides a model-oriented API with objects  for representing variables and constraints, and mechanisms for  handling sparse and multi-dimensional variable sets. The Fusion API is more  restrictive than the optimizer API: Some properties of variables and constraints  are immutable once created, and it is not possible to delete them. </div>
+<div class="par"> The Fusion API allows a simple declaration of variables <img src="math/math38.png" alt="x \in{} D" style="position : relative; bottom : -0px" class="inline-math inline-math-png"> as well as  affine functions <img src="math/math39.png" alt="(Ax-b)\in{} S" style="position : relative; bottom : -4px" class="inline-math inline-math-png"> where <img src="math/math40.png" alt="D" style="position : relative; bottom : -0px" class="inline-math inline-math-png"> and <img src="math/math41.png" alt="S" style="position : relative; bottom : -0px" class="inline-math inline-math-png"> are simple predefined convex  sets. For example, for a given matrix <img src="math/math42.png" alt="A\in{}\mathbb{R}^{m{\times} n}" style="position : relative; bottom : -0px" class="inline-math inline-math-png"> and vector <img src="math/math43.png" alt="b\in{}\mathbb{R}^{m}" style="position : relative; bottom : -0px" class="inline-math inline-math-png"> we may have </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math44.png" alt=" (Ax-b)\in{}\mathcal{Q}^{m}, {\ }{\ }{\ } x \geq{} 0 "></td><td></td></tr></table></div><div class="par"> where </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math45.png" alt=" \mathcal{Q}^{m} = \left\{{} {\ } x \in{}\mathbb{R}^{m} {\ } | {\ } x_{1} \geq{}\sqrt{x_{2}^{2} + \ldots{} + x_{m}^{2}}{\ }\right\}{} "></td><td></td></tr></table></div><div class="par"> is a standard quadratic cone. More generally, variables and affine functions of variables are specified  as belonging to either </div>
+<ul> 
+    <li><div class="par">a (convex) subset of <img src="math/math46.png" alt="\mathbb{R}^{n}" style="position : relative; bottom : -0px" class="inline-math inline-math-png">,</div>
+</li>
+ 
+    <li><div class="par">the standard quadratic (or rotated quadratic) cone,</div>
+</li>
+ 
+    <li><div class="par">the cone of semidefinite matrices.</div>
+</li>
+ 
+  </ul><div class="par"> The following sections discuss a simple model implemented using the MOSEK Fusion API. </div>
+<h2><a name="section-node-_Using%20MOSEK%20from%20Python_Example:%20Portfolio%20selection">Example: Portfolio selection</a></h2><div class="par"> The following simple portfolio selection model, “alan”, comes from the <a href="http://gams.com/modlib/modlib.htm">GAMS online model collection</a>.  The objective is to invest the total wealth of 1.0 in a number of assets such that we minimize the risk, while  requiring a certain expected return <img src="math/math47.png" alt="d" style="position : relative; bottom : -0px" class="inline-math inline-math-png">. </div>
+<div class="par"> We operate with 4 assets, <em>hardware</em>, <em>software</em>, <em>show-biz</em> and the risk-less <em>treasure bill</em>. The risk is defined by the covariance matrix </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math48.png" alt=" Q = \left[{} \begin{array}{rrrr} \displaystyle{} 4.0 &\displaystyle{} 3.0 &\displaystyle{} -1.0 &\displaystyle{} 0.0 \\[0pt] \displaystyle{} 3.0 &\displaystyle{} 6.0 &\displaystyle{} 1.0 &\displaystyle{} 0.0 \\[0pt] \displaystyle{} -1.0 &\displaystyle{} 1.0 &\displaystyle{} 10.0 &\displaystyle{} 0.0 \\[0pt] \displaystyle{} 0.0 &\displaystyle{} 0.0 &\displaystyle{} 0.0 &\displaystyle{} 0.0 \\[0pt] \end{array} \right]{} "></td><td></td></tr></table></div><div class="par"> and the expected returns </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math49.png" alt=" r = ( 8.0, 9.0, 12.0, 7.0 ), "></td><td></td></tr></table></div><div class="par"> respectively. A mathematical description of the model is then given as the <em>quadratic</em> optimization problem: </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math50.png" alt=" \begin{array}{ll} \displaystyle{} \mbox{minimize}&\displaystyle{} x^{T}Qx \\[0pt] \displaystyle{} \mbox{subject to}&\displaystyle{} r^{T}x = d \\[0pt] \displaystyle{} &\displaystyle{} \sum_{i=1}^{n} x_{i} = 1 \\[0pt] \displaystyle{} &\displaystyle{} x \geq{} 0 \\[0pt] \end{array} "></td><td></td></tr></table></div><div class="par"> This is not directly applicable to Fusion, which requires a <em>conic formulation</em>. To that end, let </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math51.png" alt=" Q = U^{T} U "></td><td></td></tr></table></div><div class="par"> be a Cholesky factorization with Cholesky factor </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math52.png" alt=" U = \left[{} \begin{array}{rrrr} \displaystyle{} 2.00 &\displaystyle{} 1.50 &\displaystyle{} -0.50 &\displaystyle{} 0.00 \\[0pt] \displaystyle{} 0.00 &\displaystyle{} 1.94 &\displaystyle{} 0.90 &\displaystyle{} 0.00 \\[0pt] \displaystyle{} 0.00 &\displaystyle{} 0.00 &\displaystyle{} 2.99 &\displaystyle{} 0.00 \\[0pt] \displaystyle{} 0.00 &\displaystyle{} 0.00 &\displaystyle{} 0.00 &\displaystyle{} 0.00 \\[0pt] \end{array} \right]{}. "></td><td></td></tr></table></div><div class="par"> An equivalent formulation is then </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math53.png" alt=" \begin{array}{ll} \displaystyle{} \mbox{minimize}&\displaystyle{} t \\[0pt] \displaystyle{} \mbox{subject to}&\displaystyle{} r^{T} x = d \\[0pt] \displaystyle{} &\displaystyle{} \sum_{i=1}^{n} x_{i} = 1 \\[0pt] \displaystyle{} &\displaystyle{} t \geq{}\left\Vert{} U x \right\Vert{}^{2} \\[0pt] \displaystyle{} &\displaystyle{} x \geq{} 0, \\[0pt] \end{array} "></td><td></td></tr></table></div><div class="par"> which we can write explicitly in conic form as </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math54.png" alt=" \begin{array}{ll} \displaystyle{} \mbox{minimize}&\displaystyle{} t \\[0pt] \displaystyle{} \mbox{subject to}&\displaystyle{} r^{T} x = d \\[0pt] \displaystyle{} &\displaystyle{} \sum_{i=1}^{n} x_{i} = 1 \\[0pt] \displaystyle{} &\displaystyle{} (t, \frac{1}{2}, Ux) \in{}\mathcal{Q}_{r}^{6} \\[0pt] \displaystyle{} &\displaystyle{} x\geq{} 0, \\[0pt] \end{array} "></td><td></td></tr></table></div><div class="par"> where </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math55.png" alt=" \mathcal{Q}_{r}^{n} = \left\{{} x \in{}\mathbb{R}^{n} {\ } | {\ } 2 x_{1} x_{2} \geq{} x_{3}^{2} + \ldots{} + x_{n}^{2} \right\}{} "></td><td></td></tr></table></div><div class="par"> is a standard <em>rotated quadratic cone</em>. </div>
+<div class="par"> To implement the model, we first define the data for the problem: </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="33" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-comment"># Security names</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">securities</span> = [ <span class="language-syntax-string">"hardware"</span>, <span class="language-syntax-string">"software"</span>, <span class="language-syntax-string">"show-biz"</span>, <span class="language-syntax-string">"t-bills"</span> ]&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Mean returns on securities</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">mean</span>       = [        <span class="language-syntax-text">8</span>.<span class="language-syntax-text">0</span>,        <span class="language-syntax-text">9</span>.<span class="language-syntax-text">0</span>,       <span class="language-syntax-text">12</span>.<span class="language-syntax-text">0</span>,       <span class="language-syntax-text">7</span>.<span class="language-syntax-text">0</span> ]&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Target mean return</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">target</span>     = <span class="language-syntax-text">10</span>.<span class="language-syntax-text">0</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Factor of covariance matrix.</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">U</span> = <span class="language-syntax-text">DenseMatrix</span>([ [ <span class="language-syntax-text">2</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">1</span>.<span class="language-syntax-text">5</span>       , -<span class="language-syntax-text">0</span>.<span class="language-syntax-text">5</span>       , <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ],&nbsp;</span></li><li><span class="language-syntax-text">                  [ <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">1</span>.<span class="language-syntax-text">93649167</span>,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">90369611</span>, <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ],&nbsp;</span></li><li><span class="language-syntax-text">                  [ <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">2</span>.<span class="language-syntax-text">98886824</span>, <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ],&nbsp;</span></li><li><span class="language-syntax-text">                  [ <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       , <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ] ])&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">numsec</span> = <span class="language-syntax-text">len</span>(<span class="language-syntax-text">securities</span>)&nbsp;</span></li></ol></pre><div class="par"> Then we can create the <tt>Model</tt> object: </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="50" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-keyword">with</span> <span class="language-syntax-text">Model</span>(<span class="language-syntax-string">'alan'</span>) <span class="language-syntax-keyword">as</span> <span class="language-syntax-text">M</span>:&nbsp;</span></li></ol></pre><div class="par"> Then we define the variables as </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="51" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-text">x</span> = <span class="language-syntax-text">M</span>.<span class="language-syntax-text">variable</span>(<span class="language-syntax-string">"x"</span>, <span class="language-syntax-text">numsec</span>, <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">greaterThan</span>(<span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>))&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">t</span> = <span class="language-syntax-text">M</span>.<span class="language-syntax-text">variable</span>(<span class="language-syntax-string">"t"</span>,      <span class="language-syntax-text">1</span>, <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">greaterThan</span>(<span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>))&nbsp;</span></li></ol></pre><div class="par"> and the two linear constraints </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="56" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-comment"># sum securities to 1.0</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">M</span>.<span class="language-syntax-text">constraint</span>(<span class="language-syntax-string">"wealth"</span>,  <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">sum</span>(<span class="language-syntax-text">x</span>), <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">equalsTo</span>(<span class="language-syntax-text">1</span>.<span class="language-syntax-text">0</span>))&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># define target expected return </span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">M</span>.<span class="language-syntax-text">constraint</span>(<span class="language-syntax-string">"dmean"</span>, <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">dot</span>(<span class="language-syntax-text">mean</span>, <span class="language-syntax-text">x</span>), <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">greaterThan</span>(<span class="language-syntax-text">target</span>))&nbsp;</span></li></ol></pre><div class="par"> and the conic constraint </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="61" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-text">M</span>.<span class="language-syntax-text">constraint</span>(<span class="language-syntax-string">"t &gt; ||Ux||"</span>,&nbsp;</span></li><li><span class="language-syntax-text">             <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">vstack</span>(<span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">constTerm</span>(<span class="language-syntax-text">1</span>,<span class="language-syntax-text">0</span>.<span class="language-syntax-text">5</span>),&nbsp;</span></li><li><span class="language-syntax-text">                         <span class="language-syntax-text">t</span>.<span class="language-syntax-text">asExpr</span>(),&nbsp;</span></li><li><span class="language-syntax-text">                         <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">mul</span>(<span class="language-syntax-text">U</span>,<span class="language-syntax-text">x</span>)), <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">inRotatedQCone</span>())&nbsp;</span></li></ol></pre><div class="par"> We optimize the model using </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="67" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-text">M</span>.<span class="language-syntax-text">solve</span>()&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">print</span> <span class="language-syntax-string">"-------------Summary----------"</span>&nbsp;</span></li></ol></pre><div class="par"> and extract the <img src="math/math6.png" alt="x" style="position : relative; bottom : -0px" class="inline-math inline-math-png">-solution as </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="70" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-text">solx</span> = <span class="language-syntax-text">x</span>.<span class="language-syntax-text">level</span>()&nbsp;</span></li></ol></pre><h2><a name="section-node-_Using%20MOSEK%20from%20Python_Running%20the%20example">Running the example</a></h2><div class="par"> Assuming that MOSEK has been installed, to run the example, simply type </div>
+<pre class="prettyprint"><ol style="list-style : none"><li><span class="language-syntax-text">python alan.py&nbsp;</span></li></ol></pre><h2><a name="sec:fusion-python-alan-source">Example <tt>alan</tt> for fusion</a></h2><div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/alan.py">Download alan.py</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="1" class="linenums"><li><span class="language-syntax-text"><span class="language-syntax-comment">##</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Copyright: Copyright (c) MOSEK ApS, Denmark. All rights reserved.</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  File:      alan.py</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  Purpose: This file contains an implementation of the alan.gms (as</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  found in the GAMS online model collection) using Java/Fusion. </span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  The model is a simple portfolio choice model. The objective is to</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  invest in a number of assets such that we minimize the risk, while</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  requiring a certain expected return.</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  We operate with 4 assets (hardware,software, show-biz and treasure</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  bill). The risk is defined by the covariance matrix</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#    Q = [[  4.0, 3.0, -1.0, 0.0 ],</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#         [  3.0, 6.0,  1.0, 0.0 ],</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#         [ -1.0, 1.0, 10.0, 0.0 ],</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#         [  0.0, 0.0,  0.0, 0.0 ]]</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># </span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">#  We use the form Q = U^T * U, where U is a Cholesky factor of Q.</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">##</span>&nbsp;</span></li><li><span class="language-syntax-text">   &nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">import</span> <span class="language-syntax-text">sys</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">import</span> <span class="language-syntax-text">mosek</span>.<span class="language-syntax-text">fusion</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">from</span>   <span class="language-syntax-text">mosek</span>.<span class="language-syntax-text">fusion</span> <span class="language-syntax-keyword">import</span> *&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">from</span>   <span class="language-syntax-text">mosek</span>.<span class="language-syntax-text">array</span> <span class="language-syntax-keyword">import</span> *&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">###########################################################</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">### Problem data:</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># </span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Security names</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">securities</span> = [ <span class="language-syntax-string">"hardware"</span>, <span class="language-syntax-string">"software"</span>, <span class="language-syntax-string">"show-biz"</span>, <span class="language-syntax-string">"t-bills"</span> ]&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Mean returns on securities</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">mean</span>       = [        <span class="language-syntax-text">8</span>.<span class="language-syntax-text">0</span>,        <span class="language-syntax-text">9</span>.<span class="language-syntax-text">0</span>,       <span class="language-syntax-text">12</span>.<span class="language-syntax-text">0</span>,       <span class="language-syntax-text">7</span>.<span class="language-syntax-text">0</span> ]&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Target mean return</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">target</span>     = <span class="language-syntax-text">10</span>.<span class="language-syntax-text">0</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment"># Factor of covariance matrix.</span>&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">U</span> = <span class="language-syntax-text">DenseMatrix</span>([ [ <span class="language-syntax-text">2</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">1</span>.<span class="language-syntax-text">5</span>       , -<span class="language-syntax-text">0</span>.<span class="language-syntax-text">5</span>       , <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ],&nbsp;</span></li><li><span class="language-syntax-text">                  [ <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">1</span>.<span class="language-syntax-text">93649167</span>,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">90369611</span>, <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ],&nbsp;</span></li><li><span class="language-syntax-text">                  [ <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">2</span>.<span class="language-syntax-text">98886824</span>, <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ],&nbsp;</span></li><li><span class="language-syntax-text">                  [ <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       ,  <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>       , <span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span> ] ])&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-text">numsec</span> = <span class="language-syntax-text">len</span>(<span class="language-syntax-text">securities</span>)&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-comment">###########################################################</span>&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">def</span> <span class="language-syntax-text">main</span>(<span class="language-syntax-text">args</span>):&nbsp;</span></li><li><span class="language-syntax-text">  <span class="language-syntax-keyword">with</span> <span class="language-syntax-text">Model</span>(<span class="language-syntax-string">'alan'</span>) <span class="language-syntax-keyword">as</span> <span class="language-syntax-text">M</span>:&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">x</span> = <span class="language-syntax-text">M</span>.<span class="language-syntax-text">variable</span>(<span class="language-syntax-string">"x"</span>, <span class="language-syntax-text">numsec</span>, <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">greaterThan</span>(<span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>))&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">t</span> = <span class="language-syntax-text">M</span>.<span class="language-syntax-text">variable</span>(<span class="language-syntax-string">"t"</span>,      <span class="language-syntax-text">1</span>, <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">greaterThan</span>(<span class="language-syntax-text">0</span>.<span class="language-syntax-text">0</span>))&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">M</span>.<span class="language-syntax-text">objective</span>(<span class="language-syntax-string">"minvar"</span>, <span class="language-syntax-text">ObjectiveSense</span>.<span class="language-syntax-text">Minimize</span>, <span class="language-syntax-text">t</span>)&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-comment"># sum securities to 1.0</span>&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">M</span>.<span class="language-syntax-text">constraint</span>(<span class="language-syntax-string">"wealth"</span>,  <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">sum</span>(<span class="language-syntax-text">x</span>), <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">equalsTo</span>(<span class="language-syntax-text">1</span>.<span class="language-syntax-text">0</span>))&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-comment"># define target expected return </span>&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">M</span>.<span class="language-syntax-text">constraint</span>(<span class="language-syntax-string">"dmean"</span>, <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">dot</span>(<span class="language-syntax-text">mean</span>, <span class="language-syntax-text">x</span>), <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">greaterThan</span>(<span class="language-syntax-text">target</span>))&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">M</span>.<span class="language-syntax-text">constraint</span>(<span class="language-syntax-string">"t &gt; ||Ux||"</span>,&nbsp;</span></li><li><span class="language-syntax-text">                 <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">vstack</span>(<span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">constTerm</span>(<span class="language-syntax-text">1</span>,<span class="language-syntax-text">0</span>.<span class="language-syntax-text">5</span>),&nbsp;</span></li><li><span class="language-syntax-text">                             <span class="language-syntax-text">t</span>.<span class="language-syntax-text">asExpr</span>(),&nbsp;</span></li><li><span class="language-syntax-text">                             <span class="language-syntax-text">Expr</span>.<span class="language-syntax-text">mul</span>(<span class="language-syntax-text">U</span>,<span class="language-syntax-text">x</span>)), <span class="language-syntax-text">Domain</span>.<span class="language-syntax-text">inRotatedQCone</span>())&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">M</span>.<span class="language-syntax-text">setLogHandler</span>(<span class="language-syntax-text">sys</span>.<span class="language-syntax-text">stdout</span>)&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-keyword">print</span>(<span class="language-syntax-string">"Solve..."</span>)&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">M</span>.<span class="language-syntax-text">solve</span>()&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-keyword">print</span> <span class="language-syntax-string">"-------------Summary----------"</span>&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-keyword">print</span>(<span class="language-syntax-string">"... Solved"</span>)&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-text">solx</span> = <span class="language-syntax-text">x</span>.<span class="language-syntax-text">level</span>()&nbsp;</span></li><li><span class="language-syntax-text">    <span class="language-syntax-keyword">print</span>(<span class="language-syntax-string">"Solution = "</span> + <span class="language-syntax-string">','</span>.<span class="language-syntax-text">join</span>([ <span class="language-syntax-language">str</span>(<span class="language-syntax-text">v</span>) <span class="language-syntax-keyword">for</span> <span class="language-syntax-text">v</span> <span class="language-syntax-keyword">in</span> <span class="language-syntax-text">solx</span>]))&nbsp;</span></li><li><span class="language-syntax-text">&nbsp;</span></li><li><span class="language-syntax-text"><span class="language-syntax-keyword">if</span> <span class="language-syntax-text">__name__</span> == <span class="language-syntax-string">'__main__'</span>:&nbsp;</span></li><li><span class="language-syntax-text">  <span class="language-syntax-text">main</span>(<span class="language-syntax-text">sys</span>.<span class="language-syntax-text">argv</span>[<span class="language-syntax-text">1</span>:])&nbsp;</span></li></ol></pre><h2><a name="section-node-_Using%20MOSEK%20from%20Python_Online%20documentation">Online documentation</a></h2><ul> 
+      <li><div class="par"><a href="http://docs.mosek.com/7.1/pythonfusion/index.html">MOSEK Fusion Python API</a></div>
+</li>
+ 
+      <li><div class="par"><a href="http://docs.mosek.com/generic/modeling.pdf">MOSEK modeling manual</a></div>
+</li>
+ 
+      <li><div class="par">The flat MOSEK/Python API: <a href="http://docs.mosek.com/7.1/pythonapi/index.html">MOSEK optimizer Python API</a></div>
+</li>
+ 
+    </ul>
+      
+    </div>
+
+    <div style="height : 1em;">&nbsp;</div>
+    <hr>
+    <ul class="pager">
+      
+      
+      
+      
+    </ul>
+    <hr>
+
+    
+    <div id="template-footer" style="text-align : right;">
+      Copyright &copy; Mosek ApS.
+    </div>
+
+    <script src="script/jquery-1.9.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Google Analytics tracking stuff-->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+        try
+        {
+            var pageTracker = _gat._getTracker("UA-3864116-1");
+            pageTracker._trackPageview();
+        } 
+        catch(err) 
+        {}
+    </script>
+
+  </div>
+</body>
+
+</htm

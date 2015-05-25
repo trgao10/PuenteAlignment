@@ -1,0 +1,37 @@
+#Oracle Java 1.6+
+
+MOSEKJAR=../../platform/linux64x86/bin/mosek.jar
+
+SOURCE=lo1.java \
+       lo2.java \
+       cqo1.java \
+       qcqo1.java \
+       qo1.java \
+       sdo1.java \
+       milo1.java \
+       concurrent1.java \
+       feasrepairex1.java \
+       mioinitsol.java \
+       production.java \
+       sensitivity.java \
+       simple.java \
+       solvebasis.java \
+
+examples.jar: $(SOURCE)
+	javac -cp $(MOSEKJAR) -d . $(SOURCE)
+	jar cf examples.jar com
+
+test: examples.jar
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.lo1
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.lo2
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.qo1
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.cqo1
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.qcqo1
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.milo1
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.concurrent1 ../data/25fv47.mps
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.feasrepairex1 ../data/feasrepair.lp
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.mioinitsol
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.production
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.sensitivity
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.simple ../data/25fv47.mps
+	java -cp $(MOSEKJAR):examples.jar com.mosek.example.solvebasis

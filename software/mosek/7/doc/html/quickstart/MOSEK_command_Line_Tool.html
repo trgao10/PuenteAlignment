@@ -1,0 +1,146 @@
+<!doctype html>
+
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> MOSEK command Line Tool </title>
+
+  <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<!-- Stylesheet and script related to page content -->
+  <link rel="stylesheet" type="text/css" media="screen,portable" href="style/style.css">
+  <link rel="stylesheet" type="text/css" media="print" href="style/print-style.css">
+
+  <link rel="stylesheet" type="text/css" href="style/content-formatting.css">
+
+  <link href="images/favicon.png" rel="shortcut icon"> </script>
+
+  
+  
+  <link rel="start" href="index.html">
+
+  <style>
+    .breadcrumb div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .pager      div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .hacked-breadcrumb { font-size : small; color : gray; }
+    .hacked-breadcrumb span.divider { padding : 0px 5px 0px 5px; }
+    .hacked-breadcrumb div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .nav        div.linebreak { display : inline; width : 1ex; height : 0px; }
+  </style>
+
+  <script type="text/javascript">
+    function body_onkeypress(ev)
+    {
+       var keynum;
+       if (window.event) keynum = ev.keyCode;
+       else              keynum = ev.which;
+       
+       if      (keynum == 84 || keynum == 116)
+       {
+         
+           document.location = "index.html";
+         
+       }
+       else if (keynum == 73 || keynum == 105)
+       {
+         
+       }
+       else
+         return keynum;
+    }
+  </script>
+</head>
+<body onkeypress="return body_onkeypress(event);">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">      
+          <a class="brand" href="http://www.mosek.com">www.mosek.com</a>
+          <ul class="nav">
+            <li><a href="index.html"> MOSEK Quickstart Guide<div class="linebreak"></div> Version 7.1 (Revision 31) </a></li>
+          </ul>
+          
+        </div>
+        
+        <div class="container hacked-breadcrumb">      
+            
+              
+              <a href="index.html"> MOSEK Quickstart Guide<div class="linebreak"></div> Version 7.1 (Revision 31) </a><span class="divider">&gt;</span>
+            
+            MOSEK command Line Tool
+        </div>
+        
+      </div>
+    </div>
+  
+  <div class="container" style="margin-top : 50px;">
+    <div class="container">
+      <ul class="pager">
+        
+        
+        
+        
+      </ul>
+    </div>
+    
+    <hr>
+    
+    <h1> MOSEK command Line Tool </h2>
+
+
+    <div style="height : 1em;">&nbsp;</div>
+
+    <div class="container">
+      
+        <div class="par"> The MOSEK command line tool can only be used from a terminal (or a DOS box on windows).  To get a full list of options for the MOSEK command line tool, use </div>
+<pre class="prettyprint"><ol style="list-style : none"><li><span class="language-syntax-text">mosek -h&nbsp;</span></li></ol></pre><div class="par"> To solve a problem in a known file format, <tt>MPS</tt>, <tt>LP</tt>, <tt>OPF</tt> or <tt>Task</tt>, say <tt>lo1.task</tt>: </div>
+<pre class="prettyprint"><ol style="list-style : none"><li><span class="language-syntax-text">mosek lo1.task&nbsp;</span></li></ol></pre><div class="par"> This will place a text file called <tt>lo1.sol</tt> describing the solutions in the same directory as the problem file. </div>
+<div class="par"> To convert from one file format to another without optimizing: </div>
+<pre class="prettyprint"><ol style="list-style : none"><li><span class="language-syntax-text">mosek -x -out lo1.opf lo1.task&nbsp;</span></li></ol></pre><div class="par"> This is documented in the <a href="http://docs.mosek.com/7.1/tools/index.html">MOSEK tools documentation</a>. </div>
+
+      
+
+      
+        
+      
+    </div>
+
+    <div style="height : 1em;">&nbsp;</div>
+    <hr>
+    <ul class="pager">
+      
+      
+      
+      
+    </ul>
+    <hr>
+
+    
+    <div id="template-footer" style="text-align : right;">
+      Copyright &copy; Mosek ApS.
+    </div>
+
+    <script src="script/jquery-1.9.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Google Analytics tracking stuff-->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+        try
+        {
+            var pageTracker = _gat._getTracker("UA-3864116-1");
+            pageTracker._trackPageview();
+        } 
+        catch(err) 
+        {}
+    </script>
+
+  </div>
+</body>
+
+</html>
+

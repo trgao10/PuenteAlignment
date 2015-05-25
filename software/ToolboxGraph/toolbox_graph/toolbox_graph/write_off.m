@@ -1,4 +1,4 @@
-function write_off(filename, vertex, face, renormalize);
+function write_off(filename, vertex, face, renormalize)
 
 % write_off - write a mesh to a OFF file
 %

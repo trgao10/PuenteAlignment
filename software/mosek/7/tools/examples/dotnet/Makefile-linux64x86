@@ -1,0 +1,81 @@
+#GMake / Linux AMD64 / Mono C#
+
+MOSEKDOTNETDLL=..\..\platform\linux64x86\bin\mosekdotnet.dll
+CSC=mcs
+EXAMPLES=lo1.exe \
+         lo2.exe \
+         qo1.exe \
+         cqo1.exe \
+         qcqo1.exe \
+         milo1.exe \
+         concurrent1.exe \
+         concurrent2.exe \
+         feasrepairex1.exe \
+         mioinitsol.exe \
+         production.exe \
+         sensitivity.exe \
+         simple.exe \
+         solvebasis.exe
+
+lo1.exe: lo1.cs
+	$(CSC) /target:exe /out:lo1.exe /r:$(MOSEKDOTNETDLL) lo1.cs
+
+lo2.exe: lo2.cs
+	$(CSC) /target:exe /out:lo2.exe /r:$(MOSEKDOTNETDLL) lo2.cs
+
+qo1.exe: qo1.cs
+	$(CSC) /target:exe /out:qo1.exe /r:$(MOSEKDOTNETDLL) qo1.cs
+
+cqo1.exe: cqo1.cs
+	$(CSC) /target:exe /out:cqo1.exe /r:$(MOSEKDOTNETDLL) cqo1.cs
+
+qcqo1.exe: qcqo1.cs
+	$(CSC) /target:exe /out:qcqo1.exe /r:$(MOSEKDOTNETDLL) qcqo1.cs
+
+milo1.exe: milo1.cs
+	$(CSC) /target:exe /out:milo1.exe /r:$(MOSEKDOTNETDLL) milo1.cs
+
+concurrent1.exe: concurrent1.cs
+	$(CSC) /target:exe /out:concurrent1.exe /r:$(MOSEKDOTNETDLL) concurrent1.cs
+
+concurrent2.exe: concurrent2.cs
+	$(CSC) /target:exe /out:concurrent2.exe /r:$(MOSEKDOTNETDLL) concurrent2.cs
+
+feasrepairex1.exe: feasrepairex1.cs
+	$(CSC) /target:exe /out:feasrepairex1.exe /r:$(MOSEKDOTNETDLL) feasrepairex1.cs
+
+mioinitsol.exe: mioinitsol.cs
+	$(CSC) /target:exe /out:mioinitsol.exe /r:$(MOSEKDOTNETDLL) mioinitsol.cs
+
+production.exe: production.cs
+	$(CSC) /target:exe /out:production.exe /r:$(MOSEKDOTNETDLL) production.cs
+
+sensitivity.exe: sensitivity.cs
+	$(CSC) /target:exe /out:sensitivity.exe /r:$(MOSEKDOTNETDLL) sensitivity.cs
+
+simple.exe: simple.cs
+	$(CSC) /target:exe /out:simple.exe /r:$(MOSEKDOTNETDLL) simple.cs
+
+solvebasis.exe: solvebasis.cs
+	$(CSC) /target:exe /out:solvebasis.exe /r:$(MOSEKDOTNETDLL) solvebasis.cs
+
+mosekdotnet.dll: $(MOSEKDOTNETDLL)
+	copy "$(MOSEKDOTNETDLL)" mosekdotnet.dll
+
+all: $(EXAMPLES)
+
+test: $(EXAMPLES) mosekdotnet.dll
+	lo1
+	lo2
+	qo1
+	cqo1
+	qcqo1
+	milo1
+	concurrent1 ..\data\25fv47.mps
+	concurrent2 ..\data\25fv47.mps
+	feasrepairex1 ..\data\feasrepair.lp
+	mioinitsol
+	production
+	sensitivity
+	simple ..\data\25fv47.mps
+	solvebasis

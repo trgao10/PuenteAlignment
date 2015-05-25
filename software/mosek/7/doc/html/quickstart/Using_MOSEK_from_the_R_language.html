@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title> Using MOSEK from the R language </title>
+
+  <link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+<!-- Stylesheet and script related to page content -->
+  <link rel="stylesheet" type="text/css" media="screen,portable" href="style/style.css">
+  <link rel="stylesheet" type="text/css" media="print" href="style/print-style.css">
+
+  <link rel="stylesheet" type="text/css" href="style/content-formatting.css">
+
+  <link href="images/favicon.png" rel="shortcut icon"> </script>
+
+  
+  
+  <link rel="start" href="index.html">
+
+  <style>
+    .breadcrumb div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .pager      div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .hacked-breadcrumb { font-size : small; color : gray; }
+    .hacked-breadcrumb span.divider { padding : 0px 5px 0px 5px; }
+    .hacked-breadcrumb div.linebreak { display : inline; width : 1ex; height : 0px; }
+    .nav        div.linebreak { display : inline; width : 1ex; height : 0px; }
+  </style>
+
+  <script type="text/javascript">
+    function body_onkeypress(ev)
+    {
+       var keynum;
+       if (window.event) keynum = ev.keyCode;
+       else              keynum = ev.which;
+       
+       if      (keynum == 84 || keynum == 116)
+       {
+         
+           document.location = "index.html";
+         
+       }
+       else if (keynum == 73 || keynum == 105)
+       {
+         
+       }
+       else
+         return keynum;
+    }
+  </script>
+</head>
+<body onkeypress="return body_onkeypress(event);">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">      
+          <a class="brand" href="http://www.mosek.com">www.mosek.com</a>
+          <ul class="nav">
+            <li><a href="index.html"> MOSEK Quickstart Guide<div class="linebreak"></div> Version 7.1 (Revision 31) </a></li>
+          </ul>
+          
+        </div>
+        
+        <div class="container hacked-breadcrumb">      
+            
+              
+              <a href="index.html"> MOSEK Quickstart Guide<div class="linebreak"></div> Version 7.1 (Revision 31) </a><span class="divider">&gt;</span>
+            
+            Using MOSEK from the R language
+        </div>
+        
+      </div>
+    </div>
+  
+  <div class="container" style="margin-top : 50px;">
+    <div class="container">
+      <ul class="pager">
+        
+        
+        
+        
+      </ul>
+    </div>
+    
+    <hr>
+    
+    <h1> Using MOSEK from the R language </h2>
+
+
+    <div style="height : 1em;">&nbsp;</div>
+
+    <div class="container">
+      
+        <div class="par"><a href="http://www.r-project.org/">R</a> is a programming language and open source software environment for  statistical computing and graphics. It has excellent support for retrieving data from offline and online  data sources, and the R-to-MOSEK Optimization Interface  allows you to channel this information directly into optimization problems. Even better, the computed solutions  can be verified, visualized or further analyzed by the wide range of R tools. </div>
+
+      
+
+      
+        <h2><a name="section-node-_Using%20MOSEK%20from%20the%20R%20language_Packaging%20network">Packaging network</a></h2><div class="par"> The R-to-MOSEK Optimization Interface is distributed as a package called  <a href="http://cran.r-project.org/web/packages/Rmosek/index.html"><tt>Rmosek</tt></a> on the <a href="http://cran.r-project.org/">CRAN</a> repository.  In this way, the latest release and bugfixes are never more than  a single command away from your R software environment. </div>
+<h2><a name="section-node-_Using%20MOSEK%20from%20the%20R%20language_The%20optimization%20interface">The optimization interface</a></h2><div class="par"> The <tt>Rmosek</tt> package is minimalistic in the sense that you formulate your optimization problems using  standard R functionality and primitive variables. The problem structure can thus be built, loaded and saved  in the fastest or easiest way, relative to the R programming language, and then pushed to the optimization  engine with little overhead. </div>
+<div class="par"> The optimization interface allows the user to solve: </div>
+<ul class="itemize"> 
+      <li><div class="par">Linear optimization problems.</div>
+</li>
+<li><div class="par">Conic optimization problems (with second-order cones and semidefinite matrices).</div>
+</li>
+<li><div class="par">Convex quadratic optimization problems.</div>
+</li>
+<li><div class="par">Mixed-integer linear and conic optimization problems.</div>
+</li>
+<li><div class="par">Separable convex optimization problems.</div>
+</li>
+</ul><h2><a name="sec:r-cqo1-source">Example <tt>cqo1</tt> for R</a></h2><div class="par"> The following is a conic optimization problem with six variables, one linear constraint,  and two second-order cones: </div>
+<div class="math-equation"><table width="100%"><tr><td width="100%%" class="math"><img src="math/math56.png" alt=" \begin{array}{lccccc} \displaystyle{} \mbox{minimize}&\displaystyle{} x_{4} + x_{5} + x_{6} &\displaystyle{} &\displaystyle{} &\displaystyle{} &\displaystyle{} \\[0pt] \displaystyle{} \mbox{subject to}&\displaystyle{} x_{1}+x_{2}+ 2 x_{3} &\displaystyle{} = &\displaystyle{} 1, &\displaystyle{} &\displaystyle{} \\[0pt] \displaystyle{} &\displaystyle{} x_{1},x_{2},x_{3} &\displaystyle{} \geq{}&\displaystyle{} 0, &\displaystyle{} &\displaystyle{} \\[0pt] \displaystyle{} &\displaystyle{} x_{4} \geq{}\sqrt{x_{1}^{2} + x_{2}^{2}}, &\displaystyle{} &\displaystyle{} &\displaystyle{} &\displaystyle{} \\[0pt] \displaystyle{} &\displaystyle{} 2 x_{5} x_{6} \geq{} x_{3}. &\displaystyle{} &\displaystyle{} &\displaystyle{} &\displaystyle{} \\[0pt] \end{array} "></td><td></td></tr></table></div><div class="par"> To construct this, we fill a list with data from the linear part of the problem. </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/cqo1.R">Download cqo1.R</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="5" class="linenums"><li><span class="language-syntax-text">cqo1 &lt;- list(sense = "min")&nbsp;</span></li><li><span class="language-syntax-text">cqo1$c &lt;- c(0,0,0,1,1,1)&nbsp;</span></li><li><span class="language-syntax-text">cqo1$A &lt;- Matrix(c(1,1,2,0,0,0), &nbsp;</span></li><li><span class="language-syntax-text">                 nrow=1, sparse=TRUE)&nbsp;</span></li><li><span class="language-syntax-text">cqo1$bc &lt;- rbind(blc = c(1), &nbsp;</span></li><li><span class="language-syntax-text">                 buc = c(1))&nbsp;</span></li><li><span class="language-syntax-text">cqo1$bx &lt;- rbind(blx = c(0,0,0,-Inf,-Inf,-Inf),&nbsp;</span></li><li><span class="language-syntax-text">                 bux = rep(Inf,6))&nbsp;</span></li></ol></pre><div class="par"> Separately, the quadratic and rotated quadratic cone is specified. </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/cqo1.R">Download cqo1.R</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="16" class="linenums"><li><span class="language-syntax-text">cqo1$cones &lt;- cbind(list("QUAD", c(4,1,2)),&nbsp;</span></li><li><span class="language-syntax-text">                    list("RQUAD", c(5,6,3)))&nbsp;</span></li></ol></pre><div class="par"> So far we have not used the <tt>Rmosek</tt> package. It does, however, come to play when we solve the problem. </div>
+<div class="container"><div class="btn-toolbar"><div class="btn-group pull-right"><div class="btn"><a href="data/cqo1.R">Download cqo1.R</a></div></div></div></div><div style="height : 2px;"></div><pre class="prettyprint linenums"><ol start="28" class="linenums"><li><span class="language-syntax-text">r &lt;- mosek(cqo1)&nbsp;</span></li></ol></pre><div class="par"> The given result contains the computed solution along with human and computer readable status codes to interpret it. </div>
+<h2><a name="section-node-_Using%20MOSEK%20from%20the%20R%20language_Online%20documentation">Online documentation</a></h2><ul> 
+      <li><div class="par"><a href="http://rmosek.r-forge.r-project.org/">Rmosek project page</a></div>
+</li>
+ 
+      <li><div class="par"><a href="http://docs.mosek.com/generic/modeling.pdf">MOSEK modeling manual</a></div>
+</li>
+ 
+    </ul>
+      
+    </div>
+
+    <div style="height : 1em;">&nbsp;</div>
+    <hr>
+    <ul class="pager">
+      
+      
+      
+      
+    </ul>
+    <hr>
+
+    
+    <div id="template-footer" style="text-align : right;">
+      Copyright &copy; Mosek ApS.
+    </div>
+
+    <script src="script/jquery-1.9.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Google Analytics tracking stuff-->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script type="text/javascript">
+        try
+        {
+            var pageTracker = _gat._getTracker("UA-3864116-1");
+            pageTracker._trackPageview();
+        } 
+        catch(err) 
+        {}
+    </script>
+
+  </div>
+</body>
+
+</html>
+

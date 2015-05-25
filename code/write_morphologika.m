@@ -1,4 +1,4 @@
-function write_morphologika( filename , ds , ga , varargin)
+function write_morphologika(filename , ds , ga , varargin)
 % Write shape information to a Morphologika file
 
 %Arguments
