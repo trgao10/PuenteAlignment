@@ -49,8 +49,9 @@ cellfun(@(a,b) copyfile(a,b),...
 ds.n                = length( ds.ids ); %Number of shapes
 ds.K                = length( ds.N ); %Number of levels
 ds.msc.general_dir  = [fileparts(pwd) filesep];
-ds.msc.mesh_dir     = [ ds.msc.general_dir 'meshes' filesep ds.dataset filesep];
-ds.msc.output_dir   = [ ds.msc.general_dir 'output' filesep ds.run filesep];
+ds.msc.mesh_dir     = [ ds.msc.general_dir 'meshes' filesep ds.dataset filesep ];
+ds.msc.output_dir   = [ ds.msc.general_dir 'output' filesep ds.run filesep ];
+ds.msc.mesh_aligned_dir = [ ds.msc.output_dir 'aligned' filesep ];
 
 %% Useful lambda functions
 center = @(X) X-repmat(mean(X,2),1,size(X,2));
@@ -64,6 +65,7 @@ ds.shape = cell ( 1, ds.n );
 disp('Subsampling meshes...');
 for ii = 1 : ds.n
     progressbar(ii, ds.n, 20);
+    [ds.shape{ ii }.origV, ds.shape{ ii }.origF] = read_off([ds.msc.mesh_dir 'original' filesep ds.names{ii} suffix]);
     ds.shape{ ii }.X              = cell( 1, ds.K );
     ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( ds.msc.mesh_dir , ds.ids{ii} , ds.N( ds.K )  );
     ds.shape{ ii }.center         = mean(  ds.shape{ ii }.X{ ds.K }, 2 );
