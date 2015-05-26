@@ -8,7 +8,7 @@
 %%%    and Comparing Shapes", The Anatomical Record 298.1 (2015): 249-276.
 %%%
 %%% Currently maintained by Tingran Gao (trgao10@math.duke.edu)
-%%% last modified: Jan 8, 2015
+%%% last modified: May 26, 2015
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% INSTRUCTIONS
