@@ -27,7 +27,7 @@
 %%% set parameters here
 iniNumPts = 200;
 finNumPts = 1000;
-n_jobs = 100;
+n_jobs = 5;
 use_cluster = 1;
 %%% You may not want to modify anything beyond this point!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
