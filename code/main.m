@@ -27,6 +27,8 @@
 %%% set parameters here
 iniNumPts = 200;
 finNumPts = 1000;
+n_jobs = 100;
+use_cluster = 1;
 %%% You may not want to modify anything beyond this point!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -109,14 +111,14 @@ k = 1;
 pa.A          = upper_triangle( ds.n ); % a 1 entry in this matrix indicates the pairwise distance should be computed
 pa.L          = 8; % Number of positions to test, the first 8 are the 8 possibilities for aligning the principal axes
 f             = @( ii , jj ) gpd(  ds.shape{ii}.X{k} , ds.shape{jj}.X{k}, pa.L );
-pa.pfj        = [ ds.msc.output_dir 'jobs/'];
+pa.pfj        = [ds.msc.output_dir 'jobs/'];
 
-% Break up all the pairwise distances into a a bunch of different
-% computations, to be computed either in the same machine or in different
-% ones
+% Break up all the pairwise distances into a a bunch of parallel tasks,
+% to be computed either in the same machine or in different ones
 % Remember to remove all previous jobs in the output/jobs folder!
-pa = compute_alignment( pa, f, 1, 0 );
-pa = reduce( ds, pa, 1 );
+pa = compute_alignment( pa, f, n_jobs, use_cluster );
+keyboard
+pa = reduce( ds, pa, n_jobs );
 
 % %Diagonals
 % for ii = 1 : ds.n
@@ -156,12 +158,13 @@ f   = @( ii , jj ) locgpd(  ds.shape{ii}.X{k} , ds.shape{jj}.X{k}, pa.R{ii,jj} ,
 
 % Remember to remove all previous jobs in the output/jobs folder!
 delete '../output/run/jobs/*'
-pa = compute_alignment( pa , f, 1, 0 );
-pa = reduce( ds, pa, 1 );
+pa = compute_alignment( pa, f, n_jobs, use_cluster );
+keyboard
+pa = reduce( ds, pa, n_jobs );
 
 %% Globalization
 % mst is the same as before
-ga     = globalize( pa , mst , 1 );
+ga     = globalize( pa, mst , 1 );
 ga.k   = k;
 
 %% Output higher resolution

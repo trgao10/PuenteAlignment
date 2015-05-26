@@ -30,7 +30,8 @@ elseif(strcmp(method,'mds'))
         tmp(ll,ll)=0;
     end
     tmp=(tmp+tmp')/2;
-    coords=mdscale(tmp,2)';
+    coords=cmdscale(tmp,2)';
+%     coords=mdscale(tmp,2)';
     if( length(find(dissimilarity==0)) > nn )
         display(['Dissimilarity has more than n zeros, maybe its incomplete']);
     end
@@ -76,7 +77,7 @@ if(figure_flag)
         scatter3(coords(1,:),coords(2,:),coords(3,:),30,classes,'filled');
         title([ jtitle '. Embed: ' method ]);
         for kk=1:nn
-            text(coords(1,kk)-0.00,coords(2,kk),coords(3,kk),names{kk});
+            text(coords(1,kk)-0.00,coords(2,kk),coords(3,kk),names{kk},'Interpreter','none');
         end
         axis([min(coords(1,:))-0.3 max(coords(1,:))+0.3 min(coords(2,:))-0.3 max(coords(2,:))+0.3 min(coords(3,:))-0.3 max(coords(3,:))+0.3]);
     else
@@ -85,7 +86,7 @@ if(figure_flag)
         scatter(coords(1,:),coords(2,:),25,classes,'filled');
         title([ jtitle '. Embed: ' method ]);
         for kk=1:nn
-            text(coords(1,kk)-0.00,coords(2,kk),names{kk});
+            text(coords(1,kk)-0.00,coords(2,kk),names{kk},'Interpreter','none');
         end
         axis([min(coords(1,:))-0.3 max(coords(1,:))+0.3 min(coords(2,:))-0.3 max(coords(2,:))+0.3 ]);
     end
@@ -96,7 +97,7 @@ end
 function jp_gplot( tree, coords )
 [r,c,v]=find(tree);
 for kk=1:length(r)
-    plot3([ coords(r(kk),1) coords(c(kk),1) ], [ coords(r(kk),2) coords(c(kk),2) ], [ coords(r(kk),3) coords(c(kk),3) ] );
+    plot3([ coords(r(kk),1) coords(c(kk),1) ], [ coords(r(kk),2) coords(c(kk),2) ], [ coords(r(kk),3) coords(c(kk),3) ], 'Interpreter', 'none' );
 end
 end
 

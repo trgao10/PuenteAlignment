@@ -2,7 +2,7 @@ operating_system='Linux';%'Windows';
 
 if( strcmp(operating_system,'Linux') )
     sep = '/';
-    bm_path= '/home/grad/trgao10/Work/MATLAB/JesusAlignment/';
+    bm_path= '/home/grad/trgao10/Work/MATLAB/PuenteAlignment/';
 elseif( strcmp(operating_system,'Windows') )
     sep = '\';
     bm_path= 'C:\Jesus\work\BoneMatching\';
@@ -16,8 +16,8 @@ path(pathdef);
 % path(path,[bm_path 'software' sep 'ToolboxGraph' sep 'toolbox_graph' sep 'toolbox_graph']);
 % path(path,[bm_path 'software' sep 'ToolboxGraph' sep 'toolbox_graph']);
 % path(path,[bm_path 'software' sep 'RectangularAssignment']);
-addpath(path, genpath([bm_path 'software']));
-addpath(path, '~/Documents/MATLAB/mosek/7/toolbox/r2013a');
+path(path, genpath([bm_path 'software']));
+% addpath(path, '~/Documents/MATLAB/mosek/7/toolbox/r2013a');
 % path(path,[bm_path 'code' sep 'MSTEWQ']);
 % path(path,[bm_path 'code' sep 'MSTEWQ' sep 'cpp' ]);
 % path(path,[bm_path 'software' sep 'ToolboxFastMarching' sep 'toolbox_fast_marching' sep 'mex']);
@@ -35,3 +35,4 @@ addpath(path, '~/Documents/MATLAB/mosek/7/toolbox/r2013a');
 % path(path,[bm_path 'code' sep 'alignment_optimization']);
 % path(path,[bm_path 'code' sep 'dimensionality_reduction' ]);
 
+% path
