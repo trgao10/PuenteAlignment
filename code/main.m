@@ -35,6 +35,9 @@ use_cluster = 1;
 %% prepare path
 clear_prevrun;
 path(path, genpath([fileparts(pwd) filesep 'software']));
+touch('../meshes/dataset/subsampled/');
+touch('../output/run/aligned/');
+touch('../output/run/jobs/');
 set(0,'RecursionLimit',1500);
 
 %% Information and parameters
