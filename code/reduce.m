@@ -14,7 +14,7 @@ for kk = 0 : n_jobs-1
 %     if( pa_tmp.id ~= pa.id )
 %         error(['Job number ' num2str( kk ) ' did not have the same identifier as pa']);
 %     end
-    [ r, c, v]    = find( pa_tmp.A );
+    [ r, c, v ]    = find( pa_tmp.A );
     for ll = 1 : length( r )
         pa.d( r(ll), c(ll) )  = pa_tmp.d( r(ll), c(ll) );
         pa.R{ r(ll), c(ll) }  = pa_tmp.R{ r(ll), c(ll) };
