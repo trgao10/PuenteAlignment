@@ -23,14 +23,6 @@
 %%%         pseudolandmakrs on each mesh, while morphologika_2.txt aligns
 %%%         the data set with finNumPts pseudolandmarks.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% set parameters here
-iniNumPts = 200;
-finNumPts = 1000;
-n_jobs = 64; %%% n_jobs>64 is useless
-use_cluster = 1;
-%%% You may not want to modify anything beyond this point!
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% prepare path
 clear_prevrun;

@@ -1,38 +1,23 @@
-operating_system='Linux';%'Windows';
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% setup parameters in this section 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% "meshesPath" is where the orignal meshes are located
+meshesPath = '/gtmp/BoyerLab/calcaneus/';
 
-if( strcmp(operating_system,'Linux') )
-    sep = '/';
-    bm_path= '/home/grad/trgao10/Work/MATLAB/PuenteAlignment/';
-elseif( strcmp(operating_system,'Windows') )
-    sep = '\';
-    bm_path= 'C:\Jesus\work\BoneMatching\';
-else
-    error('Operating system not recognized');
-end
+%%%%% "outputPath" stores intermediate files, re-aligned meshes, and
+%%%%% morphologika files
+outputPath = '/gtmp/BoyerLab/calcaneus/output/';
 
-% Set path and global  variables SHOULD USE SETENVS instead of a variable
+%%%%% set parameters for the algorithm
+restart = 1;
+iniNumPts = 200;
+finNumPts = 1000;
+n_jobs = 100; %%% more nodes, more failure (no hadoop!)
+use_cluster = 1;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% NO NEED TO MODIFY ANYTHING OTHER THAN THIS FILE!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+codePath= [pwd filesep];
 path(pathdef);
-% path(path,[bm_path 'software' sep 'ToolboxGraph' sep 'toolbox_graph' sep 'toolbox_graph' sep 'toolbox']);
-% path(path,[bm_path 'software' sep 'ToolboxGraph' sep 'toolbox_graph' sep 'toolbox_graph']);
-% path(path,[bm_path 'software' sep 'ToolboxGraph' sep 'toolbox_graph']);
-% path(path,[bm_path 'software' sep 'RectangularAssignment']);
-path(path, genpath([bm_path 'software']));
-% addpath(path, '~/Documents/MATLAB/mosek/7/toolbox/r2013a');
-% path(path,[bm_path 'code' sep 'MSTEWQ']);
-% path(path,[bm_path 'code' sep 'MSTEWQ' sep 'cpp' ]);
-% path(path,[bm_path 'software' sep 'ToolboxFastMarching' sep 'toolbox_fast_marching' sep 'mex']);
-% path(path,[bm_path 'software' sep 'ToolboxFastMarching' sep 'toolbox_fast_marching' sep 'toolbox']);
-% path(path,[bm_path 'software' sep 'ToolboxFastMarching' sep 'toolbox_fast_marching' ]);
-% path(path,[bm_path 'software' ]);
-% path(path,[bm_path 'software' sep 'spectral_clustering']);
-% path(path,[bm_path 'software' sep 'ICP']);
-% path(path,[bm_path 'software' sep 'ICP' sep 'Kroon']);
-% path(path,[bm_path 'software' sep 'ICP' sep 'Bergstrom']);
-% path(path,[bm_path 'software' sep 'ICP' sep 'Wilm']);
-% path(path,[bm_path 'software' sep 'ICP' sep 'icp_logbarrier']);
-% path(path,[bm_path 'code']);
-% path(path,[bm_path 'code' sep 'shape_comparison']);
-% path(path,[bm_path 'code' sep 'alignment_optimization']);
-% path(path,[bm_path 'code' sep 'dimensionality_reduction' ]);
-
-% path
+path(path, genpath([codePath 'software']));
