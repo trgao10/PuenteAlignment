@@ -38,6 +38,9 @@ while (diff_perms(P,P_prev) > 0)
     if ((abs(d-d_prev)<1e-5*d_prev) || (numIter>3000))
         break;
     end
+    if (numIter>100 && (mod(numIter,100)==0))
+        disp(numIter);
+    end
 end
 
 end
