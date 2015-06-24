@@ -90,3 +90,8 @@ pa.codePath        = codePath;
 % to be computed either in the same machine or in different ones
 % Remember to remove all previous jobs in the output/jobs folder!
 pa = compute_alignment( pa, f, n_jobs, use_cluster );
+
+disp('Saving current workspace...');
+save([outputPath 'session_low.mat']);
+disp('Saved!');
+
