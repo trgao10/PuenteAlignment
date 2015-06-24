@@ -1,8 +1,8 @@
 function process_job( ifn, ofn, ffn )
 
 if ~exist(ofn,'file')
-    load( ifn, 'pa_tmp');
-    load( ffn, 'f');
+    load(ifn, 'pa_tmp');
+    load(ffn, 'f');
     [r,c] = find (pa_tmp.A); % Determine which entries are to be computed
     for ii = 1 : length( r );
         display(['-------> Processing ' num2str( r(ii), '%.3d' ) ' and ' num2str( c(ii), '%.3d' ) ]);
