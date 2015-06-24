@@ -23,3 +23,7 @@ f   = @( ii , jj ) locgpd(  ds.shape{ii}.X{k} , ds.shape{jj}.X{k}, pa.R{ii,jj} ,
 % system(['rm -rf ' pa.pfj '/*']);
 touch(pa.pfj);
 pa = compute_alignment( pa, f, n_jobs, use_cluster );
+
+disp('Saving current workspace...');
+save([outputPath 'session_high.mat']);
+disp('Saved!');
