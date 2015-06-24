@@ -18,6 +18,6 @@ use_cluster = 1;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% NO NEED TO MODIFY ANYTHING OTHER THAN THIS FILE!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-codePath= [pwd filesep];
+codePath= [fileparts(pwd) filesep];
 path(pathdef);
 path(path, genpath([codePath 'software']));
