@@ -12,7 +12,7 @@ outputPath = '/gtmp/BoyerLab/output/';
 restart = 1;
 iniNumPts = 200;
 finNumPts = 1000;
-n_jobs = 100; %%% more nodes, more failure (no hadoop!)
+n_jobs = 5; %%% more nodes, more failure (no hadoop!)
 use_cluster = 1;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

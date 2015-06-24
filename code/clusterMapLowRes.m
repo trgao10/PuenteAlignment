@@ -41,7 +41,7 @@ ds.shape = cell ( 1, ds.n );
 disp('Subsampling meshes...');
 for ii = 1 : ds.n
     progressbar(ii, ds.n, 20);
-    [ds.shape{ ii }.origV, ds.shape{ ii }.origF] = read_off([outputPath 'original/' ds.names{ii} suffix]);
+    [ds.shape{ ii }.origV, ds.shape{ ii }.origF] = read_off([meshesPath ds.names{ii} suffix]);
     ds.shape{ ii }.X              = cell( 1, ds.K );
     ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( outputPath, ds.ids{ii} , ds.N( ds.K )  );
     ds.shape{ ii }.center         = mean(  ds.shape{ ii }.X{ ds.K }, 2 );
