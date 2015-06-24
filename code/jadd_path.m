@@ -2,11 +2,11 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/gtmp/BoyerLab/calcaneus/';
+meshesPath = '/gtmp/BoyerLab/test/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/BoyerLab/calcaneus/output/';
+outputPath = '/gtmp/BoyerLab/output/';
 
 %%%%% set parameters for the algorithm
 restart = 1;

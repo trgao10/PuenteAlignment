@@ -17,6 +17,7 @@ ds.N       = [iniNumPts, finNumPts];  % Number of points to spread
 ds.dataset = ''; % Used for pulling the files containing the meshes
 ds.run     = '';     % Used for writing output and intermediate files
 [ds.names, suffix] = getFileNames(meshesPath);
+ds.names
 ds.ids     = arrayfun(@(x) sprintf('%03d', x), 1:length(ds.names), 'UniformOutput', 0);
 cellfun(@(a,b) copyfile(a,b),...
     cellfun(@(x) [meshesPath x suffix], ds.names, 'UniformOutput', 0),...
