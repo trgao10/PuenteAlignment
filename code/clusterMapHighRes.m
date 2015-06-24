@@ -11,7 +11,7 @@ pa.R = pa_tmp.R;
 
 k         = 2; % Which level to run next
 pa.A      = upper_triangle( ds.n );
-pa.pfj    = [ds.msc.output_dir 'jobs/']; % 'pfj' stands for path for jobs
+pa.pfj    = [ds.msc.output_dir 'jobs/high/']; % 'pfj' stands for path for jobs
 tmpR  = pa.R;
 tmpP  = pa.P;
 %dists = @(ii,jj) sqrt(sum((ds.shape{ii}.X{k-1}-tmpR{ii,jj}*ds.shape{jj}.X{k-1}*tmpP{ii,jj}).^2));
@@ -20,5 +20,6 @@ tmpP  = pa.P;
 f   = @( ii , jj ) locgpd(  ds.shape{ii}.X{k} , ds.shape{jj}.X{k}, pa.R{ii,jj} ,  ones(ds.N(k))   );
 
 % Remember to remove all previous jobs in the output/jobs folder!
-system(['rm -rf ' pa.pfj '/*']);
+% system(['rm -rf ' pa.pfj '/*']);
+touch(pa.pfj);
 pa = compute_alignment( pa, f, n_jobs, use_cluster );
