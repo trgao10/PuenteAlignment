@@ -21,6 +21,6 @@ The current version of PuenteAlignment supports parallel computations on a clust
 -----------
 #### Please Cite:
 
-Boyer, Doug M., et al. "A New Fully Automated Approach for Aligning and Comparing Shapes." The Anatomical Record 298.1 (2015): 249-276.
+Boyer, Doug M., et al. *A New Fully Automated Approach for Aligning and Comparing Shapes.* The Anatomical Record 298.1 (2015): 249-276.
 
-Puente, Jesús. "Distances and Algorithms to Compare Sets of Shapes for Automated Biological Morphometrics." PhD Thesis, Princeton University, 2013.
+Puente, Jesús. *Distances and Algorithms to Compare Sets of Shapes for Automated Biological Morphometrics.* PhD Thesis, Princeton University, 2013.
