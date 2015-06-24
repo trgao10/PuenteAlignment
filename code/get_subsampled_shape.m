@@ -3,7 +3,7 @@ function X = get_subsampled_shape( dir , id , N )
 %If it doesnt or it does not have enough points, read original off file, subsample, save the subsampled file, and return subsample
 
 sub_off_fn = [ dir 'subsampled' filesep num2str(id) '.off' ];
-off_fn     = [ dir num2str(id) '.off' ];
+off_fn     = [ dir 'original' filesep num2str(id) '.off' ];
 
 if exist( sub_off_fn , 'file' )
     [ X, tmp ]       = read_off( sub_off_fn );
