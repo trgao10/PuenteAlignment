@@ -6,13 +6,7 @@ if ~exist(ofn,'file')
     [r,c] = find (pa_tmp.A); % Determine which entries are to be computed
     for ii = 1 : length( r );
         display(['-------> Processing ' num2str( r(ii), '%.3d' ) ' and ' num2str( c(ii), '%.3d' ) ]);
-        disp(['ifn = ' ifn]);
-        disp(['ifn = ' ofn]);
-        disp(['ffn = ' ffn]);
-        disp(['f = ']);
-        f
         [ pa_tmp.d(r(ii),c(ii)), pa_tmp.R{r(ii),c(ii)}, pa_tmp.P{r(ii),c(ii)}, pa_tmp.gamma(r(ii),c(ii)) ] = f ( r(ii), c(ii) );
-        disp('passed!');
         pa_tmp.d    (c(ii), r(ii) ) = pa_tmp.d    (r(ii), c(ii));
         pa_tmp.R    {c(ii), r(ii) } = pa_tmp.R    {r(ii), c(ii)}';
         pa_tmp.P    {c(ii), r(ii) } = pa_tmp.P    {r(ii), c(ii)}';
