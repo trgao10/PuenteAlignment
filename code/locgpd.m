@@ -1,4 +1,4 @@
-function [ d, R, P, gamma ] = locgpd( X , Y, R_0, M_0 )
+function [ d, R, P, gamma ] = locgpd( X, Y, R_0, M_0, max_iter )
 % Local Generalized Procrustes Distance function
 
 N           = size( X, 2 );
@@ -35,7 +35,7 @@ while (diff_perms(P,P_prev) > 0)
     
     %%% uncomment the following line to get debug information printed to screen
     % display(['P diff = ' num2str(diff_perms(P,P_prev) ) ', d = ' num2str(d,'%.4f') ', nvars/tot = ' num2str(100*n_vars/( size(X,2).^2 ) , '%.2f') '% ; gamma = '  num2str(gamma) ' ; d_R = ' num2str( acos( trace(R*R_prev'/3) ) , '%.6f' ) ]);
-    if ((abs(d-d_prev)<1e-5*d_prev) || (numIter>500))
+    if ((abs(d-d_prev)<1e-5*d_prev) || (numIter>max_iter))
         break;
     end
     if (numIter>100 && (mod(numIter,100)==0))

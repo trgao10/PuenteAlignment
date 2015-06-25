@@ -11,7 +11,7 @@ map( pa, f, n_jobs ); % Save n_jobs files to be processed
 
 if( use_cluster == 0 )
    for kk = 0 : n_jobs - 1
-      process_job( [ pa.pfj 'job_' num2str(kk,'%.4d') '.mat'] , [ pa.pfj 'ans_' num2str(kk,'%.4d') '.mat'], [pa.pfj 'f.mat']);
+      process_job([pa.pfj 'job_' num2str(kk,'%.4d') '.mat'], [ pa.pfj 'ans_' num2str(kk,'%.4d') '.mat'], [pa.pfj 'f.mat'], pa.max_iter);
    end
 else
     %Write script files and submit them

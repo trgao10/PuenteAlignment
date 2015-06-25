@@ -14,6 +14,7 @@ iniNumPts = 200;
 finNumPts = 1000;
 n_jobs = 100; %%% more nodes, more failure (no hadoop!)
 use_cluster = 1;
+max_iter = 3000;
 email_notification = 'trgao10@math.duke.edu';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
