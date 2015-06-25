@@ -11,7 +11,7 @@ if ~exist(ofn,'file')
         disp(['ffn = ' ffn]);
         disp(['f = ']);
         f
-        [ pa_tmp.d(r(ii),c(ii)), pa_tmp.R{r(ii),c(ii)}, pa_tmp.P{r(ii),c(ii)}, pa_tmp.gamma(r(ii),c(ii)) ] = f ( r(ii), c(ii), max_iter );
+        [ pa_tmp.d(r(ii),c(ii)), pa_tmp.R{r(ii),c(ii)}, pa_tmp.P{r(ii),c(ii)}, pa_tmp.gamma(r(ii),c(ii)) ] = f ( r(ii), c(ii) );
         disp('passed!');
         pa_tmp.d    (c(ii), r(ii) ) = pa_tmp.d    (r(ii), c(ii));
         pa_tmp.R    {c(ii), r(ii) } = pa_tmp.R    {r(ii), c(ii)}';

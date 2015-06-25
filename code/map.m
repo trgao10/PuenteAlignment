@@ -10,7 +10,7 @@ pa_tmp = pa;
 % Save pa's
 for kk = 0 : n_jobs-1
     if ~exist([ pa.pfj 'job_' num2str( kk , '%.4d' ) '.mat' ],'file')
-        inds       = [ size_job * kk + 1 : min( size_job * ( kk + 1 ) , nnz( pa.A)  ) ];
+        inds       = [ size_job * kk + 1 : min( size_job * ( kk + 1 ) , nnz( pa.A )  ) ];
         pa_tmp.A   = sparse( r(inds) , c(inds), v(inds), n, n );
         save( [ pa.pfj 'job_' num2str( kk , '%.4d' ) ] , 'pa_tmp' );
     else
