@@ -15,7 +15,7 @@ tst.gamma = zeros(1,L);
 
 % Generate the random alignments and run locgpd on them
 for ii = 1 : L
-    [ tst.d(ii) , tst.R{ii} , tst.P{ii}, tst.gamma(ii) ] = locgpd( X , Y , tst.R_0{ii} , ones(N,N), max_iter );
+    [ tst.d(ii) , tst.R{ii} , tst.P{ii}, tst.gamma(ii) ] = locgpd( X, Y, tst.R_0{ii}, ones(N,N), max_iter );
 end
 
 % Get the optimum
