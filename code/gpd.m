@@ -1,10 +1,11 @@
-function [ d, R, P, gamma ] = gpd ( X , Y , L )
+function [ d, R, P, gamma ] = gpd ( X, Y, L, max_iter )
 % Generalized Procrustes Distance
 % L - The number of samples from the abiguity distribution
 %     The first 8 samples are forced to be exactly the 8 elements of the
 %     ambiguity set when the singular values are different.
 
 N = size( X , 2 );
+max_iter = str2double(max_iter);
 
 % Intialize tests
 tst.R_0   = [ principal_component_alignment( X, Y) sample_ambiguity_distribution( X, Y, L - 8 ) ];
@@ -15,7 +16,7 @@ tst.gamma = zeros(1,L);
 
 % Generate the random alignments and run locgpd on them
 for ii = 1 : L
-    [ tst.d(ii) , tst.R{ii} , tst.P{ii}, tst.gamma(ii) ] = locgpd( X , Y , tst.R_0{ii} , ones(N,N) );
+    [ tst.d(ii) , tst.R{ii} , tst.P{ii}, tst.gamma(ii) ] = locgpd( X , Y , tst.R_0{ii} , ones(N,N), max_iter );
 end
 
 % Get the optimum
