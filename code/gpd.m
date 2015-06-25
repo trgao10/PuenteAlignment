@@ -5,7 +5,6 @@ function [ d, R, P, gamma ] = gpd ( X, Y, L, max_iter )
 %     ambiguity set when the singular values are different.
 
 N = size( X , 2 );
-max_iter = str2double(max_iter);
 
 % Intialize tests
 tst.R_0   = [ principal_component_alignment( X, Y) sample_ambiguity_distribution( X, Y, L - 8 ) ];
