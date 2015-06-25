@@ -1,4 +1,4 @@
-function process_job( ifn, ofn, ffn, max_iter )
+function process_job( ifn, ofn, ffn )
 
 if ~exist(ofn,'file')
     load(ifn, 'pa_tmp');
