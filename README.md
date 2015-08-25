@@ -1,7 +1,7 @@
 # Puente Alignment
 MST-based Generalized Dataset Procrustes Distance by Jesús Puente
 
-MATLAB Code originally written by Jesús Puente (jparrubarrena@gmail.com ); currently maintained by Tingran Gao (trgao10@math.duke.edu). This code has also been ported to R by Christopher Glynn (glynn@stat.duke.edu) under the name [*auto3dgm*](https://stat.duke.edu/~sayan/auto3dgm/).
+MATLAB Code originally written by Jesús Puente (jparrubarrena@gmail.com); currently maintained by Tingran Gao (trgao10@math.duke.edu). This code has also been ported to R by Christopher Glynn (glynn@stat.duke.edu) under the name [*auto3dgm*](https://stat.duke.edu/~sayan/auto3dgm/).
 
 -----------
 #### Sequential Execution
