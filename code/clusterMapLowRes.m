@@ -82,10 +82,10 @@ end
 k = 1;
 pa.A          = upper_triangle( ds.n ); % a 1 entry in this matrix indicates the pairwise distance should be computed
 pa.L          = 8; % Number of positions to test, the first 8 are the 8 possibilities for aligning the principal axes
+pa.max_iter   = max_iter;
 f             = @( ii , jj ) gpd(  ds.shape{ii}.X{k}, ds.shape{jj}.X{k}, pa.L, pa.max_iter );
 pa.pfj        = [ds.msc.output_dir 'jobs/low/'];
 pa.codePath   = codePath;
-pa.max_iter   = max_iter;
 pa.email_notification = email_notification;
 
 % Break up all the pairwise distances into a a bunch of parallel tasks,
