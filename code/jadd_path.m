@@ -23,3 +23,4 @@ email_notification = 'trgao10@math.duke.edu';
 codePath= [fileparts(pwd) filesep];
 path(pathdef);
 path(path, genpath([codePath 'software']));
+setenv('MOSEKLM_LICENSE_FILE', [codePath 'software/mosek/mosek.lic'])
