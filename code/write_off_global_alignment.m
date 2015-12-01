@@ -4,6 +4,9 @@ function write_off_global_alignment( filename, ds, ga, varargin )
 % Output only the shapes with indices in ind and display with
 % 'per_row' number of shapes per row
 
+center = @(X) X-repmat(mean(X,2),1,size(X,2));
+scale  = @(X) norm(center(X),'fro') ;
+
 % Parameters
 inds    = 1 : ds.n;
 if( nargin >= 4)
@@ -40,8 +43,10 @@ for ii = 1 : length( inds )
     c = (ii-1) - r * per_row;
     V = [V ( view_rot * ga.R{ inds(ii) } * ds.shape{ inds(ii) }.lowres.V * (ds.shape{inds(ii)}.scale/sqrt(ds.N(ds.K)))...
         + repmat( [ offset*c 0 offset*r ]' , 1, size( ds.shape{ inds(ii) }.lowres.V , 2 ) ) )];
-    alignedV = ga.R{ inds(ii) } * (ds.shape{ inds(ii) }.origV-repmat(ds.shape{ inds(ii) }.center, 1, size(ds.shape{ inds(ii) }.origV,2)))+repmat(ds.shape{ inds(ii) }.center, 1, size(ds.shape{ inds(ii) }.origV,2));
-    write_off([ds.msc.mesh_aligned_dir ds.names{ inds(ii) } '_aligned.off'], alignedV, ds.shape{ inds(ii) }.origF);
+%     alignedV = ga.R{ inds(ii) } * (ds.shape{ inds(ii) }.origV-repmat(ds.shape{ inds(ii) }.center, 1, size(ds.shape{ inds(ii) }.origV,2)))+repmat(ds.shape{ inds(ii) }.center, 1, size(ds.shape{ inds(ii) }.origV,2));
+    alignedV = ga.R{ inds(ii) } * (center(ds.shape{ inds(ii) }.origV)/scale(center(ds.shape{ inds(ii) }.origV)));
+    write_obj([ds.msc.mesh_aligned_dir ds.names{ inds(ii) } '_aligned.obj'], alignedV, ds.shape{ inds(ii) }.origF);
+%     write_off([ds.msc.mesh_aligned_dir ds.names{ inds(ii) } '_aligned.off'], alignedV, ds.shape{ inds(ii) }.origF);
 %     V = [ V ( view_rot * ga.R{ inds(ii) } * ds.shape{ inds(ii) }.lowres.V + repmat( [ offset*c 0 offset*r ]' , 1, size( ds.shape{ inds(ii) }.lowres.V , 2 ) ) ) ];
 end
 
