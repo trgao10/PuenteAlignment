@@ -22,7 +22,7 @@ The current version of PuenteAlignment supports parallel computations on a clust
 6. After all jobs are completed, type in `clusterReduceHighRes` and press `ENTER`. This generates high-resolution alignment results in the `output` folder you specified in ```jadd_path.m```.
 
 -----------
-#### WebGL-based Visualization
+#### WebGL-based Alignment Visualization
 After the alignment process is completed, the result can be visualized using a javascript-based viewer located under the folder *viewer/*. See [here](http://www.math.duke.edu/~trgao10/research/auto3dgm.html) for an online demo.
 
 1. Move all output files ending with "_aligned.obj" from the subfolder *aligned/* (under your output folder) to the subfolder *viewer/aligned_meshes/*.
