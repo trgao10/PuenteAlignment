@@ -20,8 +20,8 @@ The current version of PuenteAlignment supports parallel computations on a clust
 
         clusterMapLowRes
 
-All jobs should then be submitted to the cluster. Use `qstat` to monitor job status.
-4. After all jobs are completed, type
+4. All jobs should then be submitted to the cluster. Use `qstat` to monitor job status.
+5. After all jobs are completed, type
 
         clusterReduceLowRes
 
