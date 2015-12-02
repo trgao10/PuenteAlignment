@@ -15,12 +15,11 @@ The current version of PuenteAlignment supports parallel computations on a clust
 
         git clone https://github.com/trgao10/PuenteAlignment/
         
-2. Find script ```jadd_path.m``` in the folder *PuenteAlignment/code/*, and set paths and parameters there. If you assign an email address to the varialbe `email_notification`, a notification will be sent automatically to that email address whenever a cluster job completes or aborts.
-3. Launch ```MATLAB```, `cd` into the folder *PuenteAlignment/code/*, type 
+2. Find script `jadd_path.m` in the folder *PuenteAlignment/code/*, and set paths and parameters there. If you assign an email address to the varialbe `email_notification`, a notification will be sent automatically to that email address whenever a cluster job completes or aborts.
+3. Launch `MATLAB`, `cd` into the folder *PuenteAlignment/code/*, type 
 
-        ```
         clusterMapLowRes
-        ```
+
 
 All jobs should then be submitted to the cluster. Use `qstat` to monitor job status.
 4. After all jobs are completed, type
