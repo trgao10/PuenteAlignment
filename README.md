@@ -24,9 +24,11 @@ After the alignment process is completed, the result can be visualized using a j
 
 1. Move all output files ending with "_aligned.obj" from the subfolder *aligned/* (under your output folder) to the subfolder *viewer/aligned_meshes/*.
 2. Set up an HTTP server under the folder *viewer/*. For instance, you can `cd viewer/` and type in
+
         ```
         python -m SimpleHTTPServer 8000
-        ```.
+        ```
+
 If you already placed the folder *viewer/* somewhere with HTTP services, feel free to skip this step.
 3. Launch your browser and direct it to `http://localhost:8000/auto3dgm.html`.
 
