@@ -136,6 +136,7 @@
        };
        
        camera = new THREE.PerspectiveCamera( 45, 1, 0.01, 100 );
+       // camera = new THREE.OrthographicCamera( window.innerWidth / -2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / -2, 0.01, 10 );
        camera.position.z = -0.5;
        
        // add camera controls
@@ -191,7 +192,7 @@
              var bbox = new THREE.BoundingBoxHelper( object, 0xff0000 );
              var bbox = new THREE.BoundingBoxHelper( object );
              bbox.update();
-             // scene.add( bbox );
+             // scene.add( bbox )
              var diameterVec = new THREE.Vector3();
              diameterVec.subVectors(bbox.box.max, bbox.box.min);
              var center = new THREE.Vector3();
@@ -199,8 +200,8 @@
              center.divideScalar(2.0);
              var cameraSceneCenter = new THREE.Vector3();
              cameraSceneCenter.subVectors(camera.position, center);
-             // camera.position.addVectors(center, cameraSceneCenter.normalize().multiplyScalar(diameterVec.length()));
-             // camera.fov = 2 * Math.atan( diameterVec.length() / ( 2.0 * cameraSceneCenter.length() ) ) * ( 180.0 / Math.PI );
+             // camera.position.addVectors(center, cameraSceneCenter.normalize().multiplyScalar(diameterVec.length()))
+             // camera.fov = 2 * Math.atan( diameterVec.length() / ( 2.0 * cameraSceneCenter.length() ) ) * ( 180.0 / Math.PI )
              dist = diameterVec.length() / (2.0 * Math.tan(Math.PI / 8.0));
              camera.position.addVectors(center, cameraSceneCenter.normalize().multiplyScalar(dist));
              camera.lookAt(center);
