@@ -18,7 +18,7 @@ write_morphologika( [ds.msc.output_dir 'morphologika_unscaled_high.txt' ], ds, g
 
 disp('Saving current workspace....');
 system(['rm -rf ' outputPath 'session_high.mat']);
-save([outputPath 'session_high.mat']);
+save([outputPath 'session_high.mat'], '-v7.3');
 disp('Saved!');
 
 %% Compute all pairwise Procrustes distances
