@@ -96,6 +96,6 @@ touch(pa.pfj);
 pa = compute_alignment( pa, f, n_jobs, use_cluster );
 
 disp('Saving current workspace...');
-save([outputPath 'session_low.mat']);
+save([outputPath 'session_low.mat'], '-v7.3');
 disp('Saved!');
 
