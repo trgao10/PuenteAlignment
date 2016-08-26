@@ -21,5 +21,5 @@ write_morphologika( [ds.msc.output_dir 'morphologika_unscaled_low.txt'], ds, ga 
 
 disp('Saving current workspace....');
 system(['rm -rf ' outputPath 'session_low.mat']);
-save([outputPath 'session_low.mat']);
+save([outputPath 'session_low.mat'], '-v7.3');
 disp('Saved!');
