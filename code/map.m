@@ -19,5 +19,5 @@ for kk = 0 : n_jobs-1
 end
 
 % Save f (always)
-save([pa.pfj 'f.mat'],'f');
+save([pa.pfj 'f.mat'], 'f', '-v7.3');
 
