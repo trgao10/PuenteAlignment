@@ -38,9 +38,8 @@ scale  = @(X) norm(center(X),'fro') ;
 % 2. Center and standardize them
 % 3. Compute Singular Value Decompositions and other useful quantities
 ds.shape = cell ( 1, ds.n );
-disp('Subsampling meshes...');
 for ii = 1 : ds.n
-    progressbar(ii, ds.n, 20);
+    fprintf('Subsampling %s......', ds.names{ii});
     [ds.shape{ ii }.origV, ds.shape{ ii }.origF] = read_off([meshesPath ds.names{ii} suffix]);
     ds.shape{ ii }.X              = cell( 1, ds.K );
     ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( outputPath, ds.ids{ii} , ds.N( ds.K ) );
@@ -58,8 +57,8 @@ for ii = 1 : ds.n
        ds.shape{ ii }.epsilon(kk) = 1.0001*hausdorff( ds.shape{ii}.X{kk}(:,1:ds.N(kk-1)), ds.shape{ii}.X{kk} );
        ds.shape{ ii }.neigh{ kk } = jrangesearch(ds.shape{ii}.X{kk}(:,1:ds.N(kk-1)), ds.shape{ii}.X{kk} , ds.shape{ii}.epsilon(kk));
     end
+    fprintf('DONE\n');
 end
-disp('Done');
 
 %Read the low resolution files, these are used for display puposes only
 for ii = 1 : ds.n

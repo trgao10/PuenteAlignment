@@ -7,7 +7,7 @@ function [vertex,face] = read_off(filename)
 %   'vertex' is a 'nb.vert x 3' array specifying the position of the vertices.
 %   'face' is a 'nb.face x 3' array specifying the connectivity of the mesh.
 %
-%   Copyright (c) 2003 Gabriel Peyré
+%   Copyright (c) 2003 Gabriel Peyrï¿½
 
 
 fid = fopen(filename,'r');
@@ -25,8 +25,6 @@ str = fgets(fid);
 [a,str] = strtok(str); nvert = str2num(a);
 [a,str] = strtok(str); nface = str2num(a);
 
-
-
 [A,cnt] = fscanf(fid,'%f %f %f', 3*nvert);
 if cnt~=3*nvert
     warning('Problem in reading vertices.');
@@ -41,6 +39,7 @@ end
 A = reshape(A, 4, cnt/4);
 face = A(2:4,:)+1;
 
-
 fclose(fid);
+
+end
 
