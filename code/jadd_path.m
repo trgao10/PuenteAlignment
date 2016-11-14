@@ -16,7 +16,7 @@ n_jobs = 100; %%% more nodes, more failure (no hadoop!)
 use_cluster = 0;
 allow_reflection = 1;
 max_iter = 3000;
-email_notification = 'trgao10@math.duke.edu';
+email_notification = '';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% NO NEED TO MODIFY ANYTHING OTHER THAN THIS FILE!
