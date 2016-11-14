@@ -2,13 +2,11 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/home/trgao10/Work/MATLAB/input/';
-% meshesPath = '/home/grad/trgao10/Work/MATLAB/DATA/PNAS/meshes/';
+meshesPath = '/gtmp/BoyerLab/Debug-Nov14-2016/data/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-% outputPath = '/home/grad/trgao10/Work/MATLAB/output/';
-outputPath = '/home/trgao10/Work/MATLAB/output/';
+outputPath = '/gtmp/BoyerLab/Debug-Nov14-2016/output/';
 
 %%%%% set parameters for the algorithm
 restart = 1;
