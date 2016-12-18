@@ -2,20 +2,22 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/gtmp/BoyerLab/Debug-Nov14-2016/data/';
+meshesPath = '~/Work/tmpMeshes/input/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/BoyerLab/Debug-Nov14-2016/output/';
+outputPath = '~/Work/tmpMeshes/output/';
 
 %%%%% set parameters for the algorithm
 restart = 1;
-iniNumPts = 200;
-finNumPts = 1000;
-n_jobs = 100; %%% more nodes, more failure (no hadoop!)
+iniNumPts = 100;
+finNumPts = 400;
+type = 'SDP'; %%% 'MST' | 'SPEC' | 'SDP'
+
 use_cluster = 0;
+n_jobs = 100; %%% more nodes, more failure (no hadoop!)
 allow_reflection = 1;
-max_iter = 3000;
+max_iter = 100;
 email_notification = '';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

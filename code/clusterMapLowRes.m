@@ -60,8 +60,31 @@ for ii = 1 : ds.n
     fprintf('DONE\n');
 end
 
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%% debug only
+% addpath(path,genpath([pwd '/utils/']));
+% 
+% meshList = cell(1,ds.n);
+% for j=1:ds.n
+%     meshList{j} = Mesh('VF',ds.shape{j}.origV,ds.shape{j}.origF);
+%     meshList{j}.Centralize('ScaleArea');
+% end
+% options = struct('DisplayLayout', [2,3],...
+%                  'DisplayOrient', 'Horizontal',...
+%                  'boundary', 'on', 'names', 'off',...
+%                  'linkCamera', 'on', 'Shading', 'Smooth');
+% 
+% drawMeshList(meshList, options);
+% set(gcf, 'Name', 'un-aligned');
+% 
+% keyboard
+% 
+% close(gcf)
+% %%%%% remove this section entirely after finishing with the debugging
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %Read the low resolution files, these are used for display puposes only
-for ii = 1 : ds.n
+for ii = 1:ds.n
     %Read the files
     lowres_off_fn = [outputPath 'subsampled' filesep ds.ids{ii} '.off'];
     if exist( lowres_off_fn , 'file' )
