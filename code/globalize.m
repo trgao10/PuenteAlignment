@@ -55,7 +55,7 @@ if strcmpi(type, 'mst')
     
     ga.TotalFrust = sum(MSTPerEdgeFrustVec);
     
-elseif strcmpi(type, 'spec')    
+elseif strcmpi(type, 'spc')    
     [wGCL, wGCL_Dvec, wGCL_W] = assembleGCL(adjMat, RCell, 3);
     if ~issymmetric(wGCL)
         warning('wGCL not symmetric!');
