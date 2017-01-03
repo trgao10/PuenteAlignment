@@ -1,9 +1,11 @@
 %% set path and preparation
 jadd_path;
 
-disp('Loading saved workspace...');
+disp(['Loading saved workspace from ' outputPath 'session_high.mat...']);
 load([outputPath 'session_high.mat']);
 disp('Loaded!');
+
+jadd_path;
 
 pa = reduce( ds, pa, n_jobs );
 
@@ -16,7 +18,7 @@ ga.k   = k; %%% here k=2 (set in clusterMapHighRes.m)
 write_off_global_alignment( [ds.msc.output_dir 'alignment_high.off' ], ds , ga, [1:ds.n], 10, [cos(theta) -sin(theta) 0 ; sin(theta) cos(theta) 0; 0 0 1]*[ 0 0 1; 0 -1 0; 1 0 0]*ds.shape{1}.U_X{k}',3.0,1);
 write_morphologika( [ds.msc.output_dir 'morphologika_unscaled_high.txt' ], ds, ga );
 
-disp('Saving current workspace....');
+disp(['Saving current workspace at ' outputPath 'session_high.mat....']);
 system(['rm -rf ' outputPath 'session_high.mat']);
 save([outputPath 'session_high.mat'], '-v7.3');
 disp('Saved!');

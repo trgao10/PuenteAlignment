@@ -1,9 +1,11 @@
 %% set path and preparation
 jadd_path;
 
-disp('Loading saved workspace...');
+disp(['Loading saved workspace from ' outputPath 'session_low.mat...']);
 load([outputPath 'session_low.mat']);
 disp('Loaded!');
+
+jadd_path;
 
 %% Compute the edges in the MST with higher number of points
 pa_tmp = localize(ga);
@@ -21,6 +23,6 @@ f = @(ii, jj) locgpd(ds.shape{ii}.X{k}, ds.shape{jj}.X{k}, pa.R{ii,jj}, ones(ds.
 touch(pa.pfj);
 pa = compute_alignment(pa, f, n_jobs, use_cluster);
 
-disp('Saving current workspace...');
+disp(['Saving current workspace at ' outputPath 'session_high.mat...']);
 save([outputPath 'session_high.mat'], '-v7.3');
 disp('Saved!');

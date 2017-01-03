@@ -117,7 +117,7 @@ pa.email_notification = email_notification;
 touch(pa.pfj);
 pa = compute_alignment( pa, f, n_jobs, use_cluster );
 
-disp('Saving current workspace...');
+disp(['Saving current workspace at ' outputPath 'session_low.mat...']);
 save([outputPath 'session_low.mat'], '-v7.3');
 disp('Saved!');
 
