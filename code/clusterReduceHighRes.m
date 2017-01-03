@@ -7,6 +7,10 @@ disp('Loaded!');
 
 jadd_path;
 
+ds.msc.output_dir   = outputPath;
+ds.msc.mesh_aligned_dir = [outputPath 'aligned/'];
+pa.pfj        = [ds.msc.output_dir 'jobs/high/'];
+
 pa = reduce( ds, pa, n_jobs );
 
 %% Globalization

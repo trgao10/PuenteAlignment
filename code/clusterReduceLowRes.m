@@ -8,6 +8,10 @@ disp('Loaded!');
 jadd_path; %%% flush out old jadd_path.m variables stored in
            %%% session_low.mat for testing MST/SPC/SDP
 
+ds.msc.output_dir   = outputPath;
+ds.msc.mesh_aligned_dir = [outputPath 'aligned/'];           
+pa.pfj        = [ds.msc.output_dir 'jobs/low/'];
+
 pa = reduce(ds, pa, n_jobs);
 %% Globalization
 % 'ga' stands for global alignment

@@ -6,13 +6,13 @@ meshesPath = '/gtmp/BoyerLab/trgao10/PNAS/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/BoyerLab/trgao10/test_TripleTest/SPC/';
+outputPath = '/gtmp/BoyerLab/trgao10/test_TripleTest/MST/';
 
 %%%%% set parameters for the algorithm
 restart = 1;
 iniNumPts = 256;
 finNumPts = 1024;
-type = 'SPC'; %%% 'MST' | 'SPC' | 'SDP'
+type = 'MST'; %%% 'MST' | 'SPC' | 'SDP'
 
 use_cluster = 1;
 n_jobs = 100; %%% more nodes, more failure (no hadoop!)
