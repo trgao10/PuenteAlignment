@@ -5,7 +5,7 @@ function X = get_subsampled_shape( dir , id , N )
 sub_off_fn = [ dir 'subsampled' filesep num2str(id) '.off' ];
 off_fn     = [ dir 'original' filesep num2str(id) '.off' ];
 
-if exist( sub_off_fn , 'file' )
+if exist( sub_off_fn, 'file' )
     [ X, tmp ]       = read_off( sub_off_fn );
     n_subsampled_pts = size(X, 2);
 else
@@ -15,7 +15,7 @@ end
 
 if ( n_subsampled_pts < N )
     [V,F] = read_off( off_fn ); 
-    ind   = subsample( V , N, X);
+    ind   = subsample(V, N, X);
     X     = V ( :, ind );
     if( ~exist([dir filesep 'subsampled'], 'dir') )
         mkdir([dir filesep 'subsampled']);
