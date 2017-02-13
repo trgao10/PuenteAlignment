@@ -10,7 +10,9 @@ touch([outputPath 'original/']);
 touch([outputPath 'subsampled/']);
 touch([outputPath 'aligned/']);
 touch([outputPath 'jobs/']);
+
 set(0,'RecursionLimit',1500);
+rng('shuffle');
 
 %% information and parameters
 ds.N       = [iniNumPts, finNumPts];  % Number of points to spread
