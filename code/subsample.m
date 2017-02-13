@@ -7,8 +7,7 @@ function ind = subsample( V, N, seed )
 %   increase the number of sampled points
 
 if isempty( seed )
-    rng('shuffle');
-    tmp               = V(:,randi( N ));
+    tmp               = V(:, size(V,2));
     D                 = pdist2( V', tmp');
     [ tmpD , tmpind ] = max( D );
     seed              = V(:, tmpind(1) ) ;
