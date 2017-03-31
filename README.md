@@ -33,6 +33,10 @@ After the alignment process is completed, the result can be visualized using a j
 3. Launch your browser and direct it to `http://localhost:8000/auto3dgm.html`.
 
 -----------
+#### Mosek License File
+You will need a mosek license for using the fast linear programming routine for pairwise alignments. If you have an academic/institutional email address, you are eligible for a [free academic license](https://www.mosek.com/resources/academic-license) from [mosek.com](https://www.mosek.com/). Upon receiving the mosek license, simply drop it under the folder `PuenteAlignment/software/mosek/`.
+
+-----------
 #### Please Cite:
 
 Boyer, Doug M., et al. *A New Fully Automated Approach for Aligning and Comparing Shapes.* The Anatomical Record 298.1 (2015): 249-276.
