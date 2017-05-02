@@ -44,5 +44,6 @@ plot_tree( proc_d+proc_d' , mst_proc_d , ds.names , 'mds', ones(1,ds.n) , 'MDS p
 proc_d = (proc_d+proc_d')/2;
 coords = mdscale(proc_d,3)';
 write_off_placed_shapes( [ds.msc.output_dir 'map.off' ], coords, ds, ga, eye(3), mst_proc_d);
+save([outputPath 'GPDMat.mat'], 'proc_d');
 
 disp('Alignment Completed');

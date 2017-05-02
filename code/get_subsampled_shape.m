@@ -16,7 +16,7 @@ end
 if ( n_subsampled_pts < N )
     [V,F] = read_off( off_fn );
     if strcmpi(ssType, 'fps')
-        ind   = subsample(V, N, X);
+        ind = subsample(V, N, X);
     elseif strcmpi(ssType, 'gpr')
         ind = gplmk(V, F, N, X);
     else

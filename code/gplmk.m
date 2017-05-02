@@ -30,10 +30,10 @@ atria = nn_prepare(V');
 [idx, dist] = nn_search(V',atria,(1:nV)',BNN+1,-1,0.0);
 fullPhi = sparse(repmat(1:nV,1,BNN+1),idx,exp(-dist.^2/bandwidth),nV,nV);
 
-disp('Constructing full kernel......');
-tic;
+% disp('Constructing full kernel......');
+% tic;
 fullMatProd = fullPhi * sparse(1:nV,1:nV,Lambda,nV,nV) * fullPhi;
-disp(['full kernel constructed in ' num2str(toc) ' sec.']);
+% disp(['full kernel constructed in ' num2str(toc) ' sec.']);
 
 KernelTrace = diag(fullMatProd);
 
@@ -53,12 +53,12 @@ ind = [ reshape( ind_seed, 1, n_seed )  zeros( 1, N - n_seed ) ];
 invKn = zeros(N);
 invKn(1:ind(1:n_seed),1:ind(1:n_seed)) = inv(fullMatProd(ind(1:n_seed),ind(1:n_seed)));
 
-cback = 0;
+% cback = 0;
 for j=n_seed + 1 : N
-    for cc=1:cback
-        fprintf('\b');
-    end
-    cback = fprintf('Landmark: %4d\n',j);
+%     for cc=1:cback
+%         fprintf('\b');
+%     end
+%     cback = fprintf('Landmark: %4d\n',j);
     
     if j == 2
         invKn(1:(j-1),1:(j-1)) = 1/fullMatProd(ind(1),ind(1));
