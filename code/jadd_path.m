@@ -2,16 +2,18 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/gtmp/BoyerLab/trgao10/TwoBumpSphere_test/TwoBumpSphere/';
+meshesPath = '/gtmp/trgao10/test/SmallSix/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/BoyerLab/trgao10/TwoBumpSphere_test/sim_output_8192_0256_6/';
+outputPath = '/gtmp/trgao10/test/outputs/';
 
 %%%%% set parameters for the algorithm
 restart = 1;
+
 iniNumPts = 128;
 finNumPts = 256;
+ssType = 'GPR'; %%% 'FPS' | 'GPR'
 type = 'MST'; %%% 'MST' | 'SPC' | 'SDP'
 
 use_cluster = 1;

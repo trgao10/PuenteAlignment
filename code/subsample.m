@@ -9,7 +9,7 @@ function ind = subsample( V, N, seed )
 if isempty( seed )
     tmp               = V(:, size(V,2));
     D                 = pdist2( V', tmp');
-    [ tmpD , tmpind ] = max( D );
+    [ tmpD, tmpind ] = max( D );
     seed              = V(:, tmpind(1) ) ;
 end
 
@@ -25,5 +25,8 @@ ind = [ reshape( ind_seed, 1, n_seed )  zeros( 1, N - n_seed ) ];
 for ii = n_seed + 1 : N
     [tmp, ind(ii)] = max(D);
     new_dist       = pdist2( V', V(:,ind(ii))');
-    D              = min( D , new_dist );
+    D              = min( D, new_dist );
 end
+
+end
+

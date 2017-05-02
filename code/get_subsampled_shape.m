@@ -1,4 +1,4 @@
-function X = get_subsampled_shape( dir , id , N ) 
+function X = get_subsampled_shape( dir, id, N, ssType ) 
 %Read already subsampled file, if it exists
 %If it doesnt or it does not have enough points, read original off file, subsample, save the subsampled file, and return subsample
 
@@ -14,8 +14,14 @@ else
 end
 
 if ( n_subsampled_pts < N )
-    [V,F] = read_off( off_fn ); 
-    ind   = subsample(V, N, X);
+    [V,F] = read_off( off_fn );
+    if strcmpi(ssType, 'fps')
+        ind   = subsample(V, N, X);
+    elseif strcmpi(ssType, 'gpr')
+        ind = gplmk(V, F, N, X);
+    else
+        error('unknown subsample type!');
+    end
     X     = V ( :, ind );
     if( ~exist([dir filesep 'subsampled'], 'dir') )
         mkdir([dir filesep 'subsampled']);

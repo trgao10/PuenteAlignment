@@ -44,7 +44,7 @@ for ii = 1 : ds.n
     fprintf('Subsampling %s......', ds.names{ii});
     [ds.shape{ ii }.origV, ds.shape{ ii }.origF] = read_off([meshesPath ds.names{ii} suffix]);
     ds.shape{ ii }.X              = cell( 1, ds.K );
-    ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( outputPath, ds.ids{ii} , ds.N( ds.K ) );
+    ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( outputPath, ds.ids{ii}, ds.N( ds.K ), ssType );
     ds.shape{ ii }.center         = mean(  ds.shape{ ii }.X{ ds.K }, 2 );
     ds.shape{ ii }.scale          = scale( ds.shape{ ii }.X{ ds.K } );
     ds.shape{ ii }.epsilon        = zeros( 1, ds.K );
