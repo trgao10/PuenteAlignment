@@ -2,11 +2,11 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/gtmp/trgao10/test/SmallSix/';
+meshesPath = '/gtmp/BoyerLab/trgao10/Off222Teeth/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/trgao10/test/outputs/';
+outputPath = '/gtmp/BoyerLab/trgao10/Off222Teeth_128_256_MST/';
 
 %%%%% set parameters for the algorithm
 restart = 1;
