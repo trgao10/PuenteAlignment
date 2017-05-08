@@ -2,14 +2,14 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/gtmp/trgao10/test/SmallSix/';
+meshesPath = '~/Dropbox/Transmission/data/Off222Teeth/meshes/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/trgao10/test/outputs/';
+outputPath = '~/Downloads/outputOff222Teeth/';
 
 %%%%% set parameters for the algorithm
-restart = 1;
+restart = 0;
 
 iniNumPts = 128;
 finNumPts = 256;
