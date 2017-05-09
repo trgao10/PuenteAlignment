@@ -49,4 +49,6 @@ save([outputPath 'GPDMat.mat'], 'proc_d');
 taxa_code = ds.names;
 save([outputPath 'taxa_code.mat'], 'taxa_code');
 
+tangent_pca(ds, ga, k);
+
 disp('Alignment Completed');
