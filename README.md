@@ -26,10 +26,7 @@ The current version of PuenteAlignment supports parallel computations on a clust
 After the alignment process is completed, the result can be visualized using a javascript-based viewer located under the folder *viewer/*. See [here](http://www.math.duke.edu/~trgao10/research/auto3dgm.html) for an online demo.
 
 1. Move all output files ending with "_aligned.obj" from the subfolder *aligned/* (under your output folder) to the subfolder *viewer/aligned_meshes/*.
-2. Set up an HTTP server under the folder *viewer/*. (If you already placed the folder *viewer/* somewhere with HTTP services, feel free to skip this step.) For instance, you can `cd viewer/` and type into the terminal
-
-        python -m SimpleHTTPServer 8000
-
+2. Set up an HTTP server under the folder *viewer/*. (If you already placed the folder *viewer/* somewhere with HTTP services, feel free to skip this step.) For instance, you can `cd viewer/` and type into the terminal `python -m SimpleHTTPServer 8000` if you are using Python 2.x, or equivalently `python -m http.server 8000` if you have Python 3.x.
 3. Launch your browser and direct it to `http://localhost:8000/auto3dgm.html`.
 
 -----------
