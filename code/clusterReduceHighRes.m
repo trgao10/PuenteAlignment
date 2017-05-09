@@ -46,4 +46,7 @@ coords = mdscale(proc_d,3)';
 write_off_placed_shapes( [ds.msc.output_dir 'map.off' ], coords, ds, ga, eye(3), mst_proc_d);
 save([outputPath 'GPDMat.mat'], 'proc_d');
 
+taxa_code = ds.names;
+save([outputPath 'taxa_code.mat'], 'taxa_code');
+
 disp('Alignment Completed');

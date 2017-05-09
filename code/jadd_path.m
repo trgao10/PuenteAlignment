@@ -2,19 +2,20 @@
 %%%%% setup parameters in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
-meshesPath = '/gtmp/BoyerLab/trgao10/Off222Teeth/';
+
+meshesPath = '~/Dropbox/transmission/data/PNAS-Platyrrhines/meshes/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '/gtmp/BoyerLab/trgao10/Off222Teeth_128_256_MST/';
+outputPath = '/gtmp/BoyerLab/trgao10/PNAS-Platyrrhines_GPR_128_256_SDP/';
 
 %%%%% set parameters for the algorithm
-restart = 1;
+restart = 0;
 
 iniNumPts = 128;
 finNumPts = 256;
 ssType = 'GPR'; %%% 'FPS' | 'GPR'
-type = 'MST'; %%% 'MST' | 'SPC' | 'SDP'
+type = 'SDP'; %%% 'MST' | 'SPC' | 'SDP'
 
 use_cluster = 1;
 n_jobs = 100; %%% more nodes, more failure (no hadoop!)
