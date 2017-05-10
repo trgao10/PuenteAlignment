@@ -2,6 +2,10 @@ function X = get_subsampled_shape( dir, id, N, ssType )
 %Read already subsampled file, if it exists
 %If it doesnt or it does not have enough points, read original off file, subsample, save the subsampled file, and return subsample
 
+if ischar(N)
+    N = str2double(N);
+end
+
 sub_off_fn = [ dir 'subsampled' filesep num2str(id) '.off' ];
 off_fn     = [ dir 'original' filesep num2str(id) '.off' ];
 

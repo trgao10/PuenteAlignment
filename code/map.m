@@ -14,11 +14,12 @@ for kk = 0 : n_jobs-1
         pa_tmp.A   = sparse( r(inds) , c(inds), v(inds), n, n );
         save( [ pa.pfj 'job_' num2str( kk , '%.4d' ) ] , 'pa_tmp' );
     else
-        display(['File ' [ pa.pfj 'job_' num2str( kk , '%.4d' ) ] '.mat already existed, skipping...']);
+        disp(['File ' [ pa.pfj 'job_' num2str( kk , '%.4d' ) ] '.mat already existed, skipping...']);
     end
 end
 
 % Save f (always)
 save([pa.pfj 'f.mat'], 'f', '-v7.3');
+
 end
 
