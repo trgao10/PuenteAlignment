@@ -30,3 +30,29 @@ disp(['Saving current workspace at ' outputPath 'session_low.mat....']);
 system(['rm -rf ' outputPath 'session_low.mat']);
 save([outputPath 'session_low.mat'], '-v7.3');
 disp('Saved!');
+
+%% Compute all pairwise Procrustes distances
+%k          = 3;
+proc_d     = zeros( ds.n , ds.n );
+for ii = 1 : ds.n
+    for jj = ii : ds.n
+        if( ii == jj )
+            continue;
+        end
+        [tmpR, proc_d( ii, jj)] = jprocrustes( ds.shape{ii}.X{k}*ga.P{ii} , ds.shape{jj}.X{k}*ga.P{jj} );
+    end
+end
+mst_proc_d = graphminspantree( sparse( proc_d + proc_d' ) );
+% plot_tree( proc_d+proc_d' , mst_proc_d , ds.names , 'mds', ones(1,ds.n) , 'MDS procrustes distances' );
+
+proc_d = (proc_d+proc_d')/2;
+% coords = mdscale(proc_d,3)';
+% write_off_placed_shapes( [ds.msc.output_dir 'map.off' ], coords, ds, ga, eye(3), mst_proc_d);
+save([outputPath 'GPDMat.mat'], 'proc_d');
+
+taxa_code = ds.names;
+save([outputPath 'taxa_code.mat'], 'taxa_code');
+
+tangent_pca(ds, ga, k);
+
+disp('Low-Resolution Alignment Completed');
