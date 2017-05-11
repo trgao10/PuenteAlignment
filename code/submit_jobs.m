@@ -24,6 +24,4 @@ for kk = 0: n_jobs -1
     eval( sub_sh(kk) )
 end
     
-    
-
-
+end

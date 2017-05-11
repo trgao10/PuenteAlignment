@@ -5,7 +5,7 @@ function pa = compute_alignment( pa, f, n_jobs, use_cluster )
 % al must also implement a function save()
 % f must take two integers and return [d,R,P,gamma]
 
-n          = size( pa.A , 2 );
+% n          = size( pa.A , 2 );
 
 map( pa, f, n_jobs ); % Save n_jobs files to be processed
 
@@ -16,6 +16,8 @@ if( use_cluster == 0 )
 else
     %Write script files and submit them
     submit_jobs( pa , n_jobs );
+end
+
 end
     
 % 
