@@ -3,14 +3,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% "meshesPath" is where the orignal meshes are located
 
-meshesPath = '~/Dropbox/Transmission/data/PNASExt/meshes/';
+% meshesPath = '~/Dropbox/transmission/data/PNAS-Platyrrhines/meshes/';
+meshesPath = '/gtmp/BoyerLab/trgao10/PNASExt/';
 
 %%%%% "outputPath" stores intermediate files, re-aligned meshes, and
 %%%%% morphologika files
-outputPath = '~/Downloads/output_tmp/';
+% outputPath = '/gtmp/BoyerLab/trgao10/PNAS-Platyrrhines_GPR_150_300_MST_MaxIter1000/';
+outputPath = '/gtmp/BoyerLab/trgao10/PNASExt_GPR_128_256_MST/';
 
 %%%%% set parameters for the algorithm
-restart = 0;
+restart = 1;
 
 iniNumPts = 128;
 finNumPts = 256;
@@ -21,7 +23,7 @@ use_cluster = 1;
 n_jobs = 100; %%% more nodes, more failure (no hadoop!)
 allow_reflection = 1; %%% if set to 0, no reflection will be allowed in
                       %%% the alignments
-max_iter = 100; %%% maximum number of iterations for each pairwise alignment
+max_iter = 1000; %%% maximum number of iterations for each pairwise alignment
 email_notification = ''; %%% put your email address here f you would like
                          %%% to get notified when a parallel job finishes
 
