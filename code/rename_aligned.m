@@ -1,6 +1,6 @@
 aligned_path = '../viewer/aligned_meshes/';
 renamed_aligned_path = '~/Downloads/renamed_aligned_meshes/';
-spreadsheet_path = '~/Dropbox/Transmission/data/PNASExt/ClassificationTable.xlsx';
+spreadsheet_path = '~/Dropbox/Transmission/data/PNASExtPlaty319/ClassificationTable.xlsx';
 
 fileNames = cellfun(@(x) strrep(x, '_aligned', ''), getFileNames(aligned_path), 'UniformOutput', 0);
 system(['rm -rf ' renamed_aligned_path]);
