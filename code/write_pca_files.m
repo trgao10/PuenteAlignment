@@ -57,3 +57,5 @@ writetable(eTable, fullfile(filepath, 'pca', 'pca_eigenvectors.csv'));
 vTable = table((1:nPC)', eigenvalue, explained, ...
 	'VariableNames',{'PC', 'Eigenvalue', 'Percent_variance_explained'});
 writetable(vTable, fullfile(filepath, 'pca', 'pca_variance.csv'));
+
+end

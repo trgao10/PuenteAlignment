@@ -57,3 +57,5 @@ proj = meshRowMat * (eye(length(meanShapeRow)) - meanShapeRow'*meanShapeRow);
 
 % Differences between projected coordinates and reference
 coords = proj - (ones(size(meshRowMat, 1), 1) * meanShapeRow);
+
+end

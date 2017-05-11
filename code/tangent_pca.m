@@ -24,3 +24,5 @@ c = tangent_coords(ds, ga, k);
 [eivect, score, eival, ~, explain] = pca(c);
 write_pca_files(ds.msc.output_dir, ds.names, eivect, score, eival, explain);
 disp('PCA done.')
+
+end
