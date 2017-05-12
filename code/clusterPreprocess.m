@@ -44,11 +44,12 @@ else
     matlab_cmd = @( kk ) ['\"cd ' codePath 'code/; ' 'jadd_path; get_subsampled_shape(''' outputPath ''', ' ds.ids{kk} ', ' num2str(ds.N(ds.K)) ', ''' ssType '''); exit;\"'];
     pfj = [ds.msc.output_dir 'jobs/subs/'];
     touch(pfj);
-    if (length(strfind(email_notification, '@')) == 1)
-        sub_sh = @( kk ) ['!qsub -m e -M ' email_notification ' -N job_' num2str(kk,'%.4d') ' -o ' pfj 'stdout_' num2str(kk,'%.4d') ' -e ' pfj 'stderr_' num2str(kk,'%.4d') ' ' pfj 'job_' num2str(kk,'%.4d') '.sh'];
-    else
-        sub_sh = @( kk ) ['!qsub -N job_' num2str(kk,'%.4d') ' -o ' pfj 'stdout_' num2str(kk,'%.4d') ' -e ' pfj 'stderr_' num2str(kk,'%.4d') ' ' pfj 'job_' num2str(kk,'%.4d') '.sh'];
-    end
+    % if (length(strfind(email_notification, '@')) == 1)
+    %     sub_sh = @( kk ) ['!qsub -m e -M ' email_notification ' -N job_' num2str(kk,'%.4d') ' -o ' pfj 'stdout_' num2str(kk,'%.4d') ' -e ' pfj 'stderr_' num2str(kk,'%.4d') ' ' pfj 'job_' num2str(kk,'%.4d') '.sh'];
+    % else
+    %     sub_sh = @( kk ) ['!qsub -N job_' num2str(kk,'%.4d') ' -o ' pfj 'stdout_' num2str(kk,'%.4d') ' -e ' pfj 'stderr_' num2str(kk,'%.4d') ' ' pfj 'job_' num2str(kk,'%.4d') '.sh'];
+    % end
+    sub_sh = @( kk ) ['!qsub -N job_' num2str(kk,'%.4d') ' -o ' pfj 'stdout_' num2str(kk,'%.4d') ' -e ' pfj 'stderr_' num2str(kk,'%.4d') ' ' pfj 'job_' num2str(kk,'%.4d') '.sh'];
     
     for ii = 1:ds.n
         script_txt = [ PBS script matlab_cmd(ii) ];
