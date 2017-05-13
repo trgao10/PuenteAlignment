@@ -1,4 +1,4 @@
-function [ d, R, P ] = loclinassign( X, Y, R_0, M_0 )
+function [ d, R, P, gamma ] = loclinassign( X, Y, R_0, M_0 )
 % Local Generalized Procrustes Distance function
 
 N = size( X, 2 );
@@ -15,6 +15,7 @@ MD2_0 = D2_sparse( X , R_0*Y , M_0 );
 
 % Not very elegant since MATLAB doesn't have repeat-until loops
 P = P_0; R = R_0; d = sqrt( d2 );
+gamma = 0;
 
 end
 
