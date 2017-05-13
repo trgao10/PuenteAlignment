@@ -29,17 +29,28 @@ disp('Saved!');
 
 %% Compute all pairwise Procrustes distances
 %k          = 3;
+% proc_d     = zeros( ds.n , ds.n );
+% for ii = 1 : ds.n
+%     for jj = ii : ds.n
+%         if( ii == jj )
+%             continue;
+%         end
+%         [tmpR, proc_d( ii, jj)] = jprocrustes( ds.shape{ii}.X{k}*ga.P{ii} , ds.shape{jj}.X{k}*ga.P{jj} );
+%     end
+% end
+% mst_proc_d = graphminspantree( sparse( proc_d + proc_d' ) );
+% plot_tree( proc_d+proc_d' , mst_proc_d , ds.names , 'mds', ones(1,ds.n) , 'MDS procrustes distances' );
+
 proc_d     = zeros( ds.n , ds.n );
+N = ds.N(end);
 for ii = 1 : ds.n
     for jj = ii : ds.n
         if( ii == jj )
             continue;
         end
-        [tmpR, proc_d( ii, jj)] = jprocrustes( ds.shape{ii}.X{k}*ga.P{ii} , ds.shape{jj}.X{k}*ga.P{jj} );
+        proc_d( ii, jj) = locgpd( ga.R{ii}*ds.shape{ii}.X{k}, ga.R{jj}*ds.shape{jj}.X{k}, eye(3), ones(N,N), 10 );
     end
 end
-mst_proc_d = graphminspantree( sparse( proc_d + proc_d' ) );
-% plot_tree( proc_d+proc_d' , mst_proc_d , ds.names , 'mds', ones(1,ds.n) , 'MDS procrustes distances' );
 
 proc_d = (proc_d+proc_d')/2;
 % coords = mdscale(proc_d,3)';

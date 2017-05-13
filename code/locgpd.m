@@ -1,7 +1,7 @@
 function [ d, R, P, gamma ] = locgpd( X, Y, R_0, M_0, max_iter )
 % Local Generalized Procrustes Distance function
 
-N           = size( X, 2 );
+N = size( X, 2 );
 
 % How many different entries do these permutations have ?
 diff_perms = @( P1, P2 ) sum(sum(abs(P1-P2)));
