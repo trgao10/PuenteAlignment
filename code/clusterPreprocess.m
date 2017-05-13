@@ -42,7 +42,7 @@ else
     PBS = '#PBS -l nodes=1:ppn=1,walltime=3:00:00\n#PBS -m abe\n';
     script = 'matlab -nodesktop -nodisplay -nojvm -nosplash -r ' ;
     matlab_cmd = @( kk ) ['\"cd ' codePath 'code/; ' 'jadd_path; get_subsampled_shape(''' outputPath ''', ' ds.ids{kk} ', ' num2str(ds.N(ds.K)) ', ''' ssType '''); exit;\"'];
-    pfj = [ds.msc.output_dir 'jobs/subs/'];
+    pfj = [ds.msc.output_dir 'jobs/prep/'];
     touch(pfj);
     % if (length(strfind(email_notification, '@')) == 1)
     %     sub_sh = @( kk ) ['!qsub -m e -M ' email_notification ' -N job_' num2str(kk,'%.4d') ' -o ' pfj 'stdout_' num2str(kk,'%.4d') ' -e ' pfj 'stderr_' num2str(kk,'%.4d') ' ' pfj 'job_' num2str(kk,'%.4d') '.sh'];
