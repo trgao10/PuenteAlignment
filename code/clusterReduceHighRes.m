@@ -36,7 +36,7 @@ write_morphologika( [ds.msc.output_dir 'morphologika_unscaled_high.txt' ], ds, g
 % mst_proc_d = graphminspantree( sparse( proc_d + proc_d' ) );
 % plot_tree( proc_d+proc_d' , mst_proc_d , ds.names , 'mds', ones(1,ds.n) , 'MDS procrustes distances' );
 
-%% Update final GPD
+%% Update final GPD on cluster
 pa_tmp = localize(ga);
 pa.R = pa_tmp.R;
 
