@@ -1,4 +1,4 @@
-function [ d, R, P, gamma ] = loclinassign( X, Y, R_0, M_0 )
+function [ d, R, P ] = loclinassign( X, Y, R_0, M_0 )
 % Local Generalized Procrustes Distance function
 
 N = size( X, 2 );
