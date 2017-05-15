@@ -14,7 +14,8 @@ pa.pfj        = [ds.msc.output_dir 'jobs/high/'];
 pa = reduce( ds, pa, n_jobs );
 
 %% Globalization
-% mst is the same as before
+% try using name mst?
+mst     = graphminspantree(sparse(pa.d + pa.d'));
 ga     = globalize(pa, mst, 1, type);
 ga.k   = k; %%% here k=2 (set in clusterMapHighRes.m)
 
@@ -23,17 +24,18 @@ write_off_global_alignment( [ds.msc.output_dir 'alignment_high.off' ], ds , ga, 
 write_morphologika( [ds.msc.output_dir 'morphologika_unscaled_high.txt' ], ds, ga );
 
 %% Compute all pairwise Procrustes distances
-%k          = 3;
-% proc_d     = zeros( ds.n , ds.n );
-% for ii = 1 : ds.n
-%     for jj = ii : ds.n
-%         if( ii == jj )
-%             continue;
-%         end
-%         [tmpR, proc_d( ii, jj)] = jprocrustes( ds.shape{ii}.X{k}*ga.P{ii} , ds.shape{jj}.X{k}*ga.P{jj} );
-%     end
-% end
-% mst_proc_d = graphminspantree( sparse( proc_d + proc_d' ) );
+proc_d     = zeros( ds.n , ds.n );
+for ii = 1 : ds.n
+    for jj = ii : ds.n
+        if( ii == jj )
+            continue;
+        end
+        [tmpR, proc_d( ii, jj)] = jprocrustes( ds.shape{ii}.X{k}*ga.P{ii} , ds.shape{jj}.X{k}*ga.P{jj} );
+    end
+end
+mst_proc_d = graphminspantree( sparse( proc_d + proc_d' ) );
+proc_d = (proc_d+proc_d')/2;
+save([outputPath 'GPDMat_high.mat'], 'proc_d');
 % plot_tree( proc_d+proc_d' , mst_proc_d , ds.names , 'mds', ones(1,ds.n) , 'MDS procrustes distances' );
 
 %% Update final GPD on cluster
