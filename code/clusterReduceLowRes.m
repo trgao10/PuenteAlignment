@@ -53,6 +53,8 @@ proc_d = (proc_d+proc_d')/2;
 taxa_code = ds.names;
 save([outputPath 'taxa_code.mat'], 'taxa_code');
 
-% tangent_pca(ds, ga, k);
+tangent_pca(ds, ga, k);
+align_coord_pca(ds, ga, k);
 
 disp('Low-Resolution Alignment Completed');
+

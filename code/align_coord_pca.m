@@ -17,10 +17,10 @@ function align_coord_pca(ds, ga, k)
 % Website: http://www.apotropa.com
 % January 17, 2017
 
-disp('Running partial procrustes tangent coordinate PCA...')
+disp('Running Procrustes aligned coordinate PCA...')
 c = align_coords(ds, ga, k);
 [eivect, score, eival, ~, explain] = pca(c);
-write_pca_files(ds.msc.output_dir, ds.names, eivect, score, eival, explain);
+write_align_pca_files(ds.msc.output_dir, ds.names, eivect, score, eival, explain);
 disp('PCA done.')
 
 end

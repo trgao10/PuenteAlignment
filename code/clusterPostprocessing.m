@@ -34,6 +34,7 @@ taxa_code = ds.names;
 save([outputPath 'taxa_code.mat'], 'taxa_code');
 
 tangent_pca(ds, ga, k);
+align_coord_pca(ds, ga, k);
 
 disp(['Saving current workspace at ' outputPath 'session_high.mat....']);
 system(['rm -rf ' outputPath 'session_high.mat']);
