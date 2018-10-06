@@ -70,7 +70,7 @@ for ii = 1 : ds.n
     progressbar(ii, ds.n, 20);
     [ds.shape{ ii }.origV, ds.shape{ ii }.origF] = read_off([meshesPath ds.names{ii} suffix]);
     ds.shape{ ii }.X              = cell( 1, ds.K );
-    ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( outputPath, ds.ids{ii} , ds.N( ds.K ) );
+    ds.shape{ ii }.X{ ds.K }      = get_subsampled_shape( outputPath, ds.ids{ii} , ds.N( ds.K ), ssType );
     ds.shape{ ii }.center         = mean(  ds.shape{ ii }.X{ ds.K }, 2 );
     ds.shape{ ii }.scale          = scale( ds.shape{ ii }.X{ ds.K } );
     ds.shape{ ii }.epsilon        = zeros( 1, ds.K );
@@ -127,7 +127,7 @@ pa = reduce( ds, pa, n_jobs );
 %% Globalization
 % 'ga' stands for global alignment
 mst     = graphminspantree( sparse( pa.d + pa.d' ) );
-ga      = globalize( pa, mst+mst', 2 ); 
+ga      = globalize( pa, mst+mst', 2,type ); 
 ga.k    = k;
 
 plot_tree( pa.d+pa.d', mst, ds.names, 'mds', ones(1,ds.n),'');
@@ -161,7 +161,7 @@ pa = reduce( ds, pa, n_jobs );
 
 %% Globalization
 % mst is the same as before
-ga     = globalize( pa, mst , 1 );
+ga     = globalize( pa, mst , 1 ,type);
 ga.k   = k;
 
 %% Output higher resolution
