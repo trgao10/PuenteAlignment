@@ -1,0 +1,43 @@
+How to run Auto3dgm locally.
+
+0) Download the repo
+0.1) Go to https://github.com/hkirvesl/Auto3dgm-matlab
+0.2) Click Clone/Download -> Download ZIP
+0.3) Save somewhere and unzip
+
+1) Verify you have Matlab installed (You might need Biostuff and optimization toolkit installed as well, if matlab complains about this)
+2) Verify you have mosek installed
+Installing mosek:
+
+2.1)Follow the instructions in: 
+https://www.mosek.com/downloads/
+
+N.B. If you are running Windows, install mosek to a directory that does not have spaces in the file path. Having spaces in the file path may cause Mosek .mex file problems.
+
+2.2)Once done, request a personal academic licence
+https://www.mosek.com/products/academic-licenses/
+
+2.3)You will receive an email from Mosek containing mosek.lic.
+
+2.4) Put the mosek .lic file to the following two locations:
+
+2.4.1) The directory where you installed mosek
+2.4.2) In the auto3dgm repo, software/mosek (you may customize this path in the jadd_path.m file)
+
+3) Editing jadd_path.m
+
+In the folder where you downloaded the repo, edit /code/jadd_path.m:
+
+3.1)meshesPath = the path to the folder where you have your unaligned shapes (.off files)
+3.2)outputPath = the path to the folder where you want the analysis output to be stored
+3.3) set use_cluster = 0 to enable local parallel run
+
+N.B. If you are running windows, remember to use "\" instead of "/" when specifying the path. Also remember to put the final "/"
+
+4) Start Matlab
+4.1)set matlab directory to the folder where you installed the repo/code
+4.2.1)for sequential execution, run main.m by typing "main" in the console
+4.2.2)for parallel execution, follow the instructions in https://github.com/trgao10/PuenteAlignment
+
+
+
